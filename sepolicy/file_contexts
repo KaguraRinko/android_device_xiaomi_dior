@@ -1,0 +1,8 @@
+# Camera
+/data/cam_socket([0-9])+                      u:object_r:camera_socket:s0
+
+# CMHW
+/sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
+
+# Sensors
+/persist/misc/sensors(/.*)?                   u:object_r:sensors_persist_file:s0

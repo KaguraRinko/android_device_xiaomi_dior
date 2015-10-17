@@ -1,0 +1,11 @@
+allow mpdecision kernel:dir search;
+allow mpdecision kernel:file { read open };
+
+allow mpdecision socket_device:dir { write add_name remove_name };
+allow mpdecision socket_device:sock_file { create setattr write unlink };
+
+allow mpdecision system_data_file:dir { write add_name };
+allow mpdecision system_data_file:file { open append create };
+
+allow mpdecision thermal-engine:dir search;
+allow mpdecision thermal-engine:file { read open };

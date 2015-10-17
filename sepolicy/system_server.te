@@ -1,0 +1,2 @@
+# CMHW
+allow system_server vibeamp_sysfs:file rw_file_perms;

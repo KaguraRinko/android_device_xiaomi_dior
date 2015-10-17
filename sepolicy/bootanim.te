@@ -1,0 +1,3 @@
+allow bootanim init:unix_stream_socket connectto;
+allow bootanim socket_device:sock_file write;
+allow bootanim mpdecision:unix_stream_socket connectto;
