@@ -1,2 +1,0 @@
-allow location init:unix_stream_socket connectto;
-allow location socket_device:sock_file write;

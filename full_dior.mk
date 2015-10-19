@@ -14,15 +14,8 @@
 # limitations under the License.
 #
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/xiaomi/dior/device.mk)
-$(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
-
-# Inherit some common CM stuff
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Device identifier. This must come after all inclusions.
 PRODUCT_DEVICE := dior

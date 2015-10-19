@@ -1,4 +1,2 @@
-allow mediaserver default_prop:property_service set;
-allow mediaserver init:unix_dgram_socket sendto;
-allow mediaserver socket_device:sock_file write;
-allow mediaserver system_data_file:sock_file write;
+#============= mediaserver ==============
+allow mediaserver system_server:unix_stream_socket { read write };

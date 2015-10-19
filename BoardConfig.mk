@@ -45,7 +45,7 @@ TARGET_NO_RADIOIMAGE := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Encryption
-TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_DISK_ENCRYPTION := false
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
@@ -57,7 +57,7 @@ BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
 BOARD_FLASH_BLOCK_SIZE             := 131072
 
 # FM
-TARGET_QCOM_NO_FM_FIRMWARE := true
+BOARD_HAVE_QCOM_FM := true
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -70,6 +70,8 @@ TARGET_PROVIDES_GPS_LOC_API := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
+HAVE_ADRENO_SOURCE:= false
+TARGET_USES_POST_PROCESSING := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
@@ -93,13 +95,17 @@ TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.c
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
-TARGET_KERNEL_CONFIG := cyanogenmod_dior_defconfig
+TARGET_KERNEL_CONFIG := dior_xenon_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=dior user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_CUSTOM_BOOTIMG_MK := device/xiaomi/dior/mkbootimg.mk
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
+
+# Camera
+USE_CAMERA_STUB := true
+USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true

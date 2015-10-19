@@ -18,7 +18,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Xiaomi HM 1S"
+#define BTM_DEF_LOCAL_NAME   "HM NOTE LTE"
 
 #define BLUETOOTH_QTI_SW TRUE
 // Disables read remote device feature

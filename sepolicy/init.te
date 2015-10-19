@@ -1,1 +1,2 @@
-allow init self:process execmem;
+#============= init ==============
+allow init firmware_file:dir mounton;

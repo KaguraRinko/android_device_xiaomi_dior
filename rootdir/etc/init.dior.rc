@@ -162,8 +162,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
     # Adjust vibrator amplitude
-    write /sys/class/timed_output/vibrator/amp 90
-    chown root system /sys/class/timed_output/vibrator/amp
+    chown system system /sys/class/timed_output/vibrator/amp
     chmod 0664 /sys/class/timed_output/vibrator/amp
     restorecon /sys/class/timed_output/vibrator/amp
 
@@ -307,7 +306,7 @@ service ril-daemon2 /system/bin/rild -c 2
     group radio cache inet misc audio sdcard_rw qcom_oncrpc qcom_diag log
     disabled
 
-on property:persist.radio.multisim.config=dsds
+on property:persist.radio.multisim.config=none
     start ril-daemon2
 
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
