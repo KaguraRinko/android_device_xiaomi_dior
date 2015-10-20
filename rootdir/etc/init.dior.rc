@@ -87,6 +87,9 @@ on boot
     chown system system /sys/class/leds/blue/duty_pcts
     chown system system /sys/class/leds/blue/ramp_step_ms
 
+    chown system system /sys/class/leds/torch-light/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
 
@@ -490,3 +493,19 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/sched_mc_power_savings 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
     write /sys/class/devfreq/qcom,cpubw.64/governor performance
+
+# Set different perfer network type for different phone type
+on property:ro.boot.modem=LTETD
+    setprop ro.telephony.default_network 17
+on property:ro.boot.modem=LTEW
+    setprop ro.telephony.default_network 9
+on property:ro.boot.modem=LTEGLOBAL
+    setprop ro.telephony.default_network 9
+
+# Enable manual network selection function for CMCC
+on property:ro.boot.modem=LTETD
+    setprop persist.radio.rat_on combine
+
+# Enable manual network selection function for CU
+on property:ro.boot.modem=LTEW
+    setprop persist.radio.rat_on combine

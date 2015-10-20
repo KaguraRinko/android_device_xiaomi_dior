@@ -35,7 +35,6 @@ persist.data.netmgrd.qos.enable=true
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.dont_use_dsd=true
 persist.radio.msgtunnel.start=false
-persist.radio.rat_on=combine
 ro.telephony.call_ring.multiple=false
 
 # OTA

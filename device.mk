@@ -22,9 +22,13 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+
+# Art
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-filter=everything
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -82,7 +86,9 @@ PRODUCT_PACKAGES += \
     copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
-    memtrack.msm8226
+    memtrack.msm8226 \
+    liboverlay \
+    libemoji
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -230,6 +236,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    make_ext4fs \
+    resize2fs \
+    setup_fs \
+    ntfsfix \
+    ntfs-3g \
+    mkntfs \
+    dumpe2fs \
+    e2fsck_static \
+    mke2fs_static \
+    resize2fs_static
 
 # Wifi
 PRODUCT_PACKAGES += \
