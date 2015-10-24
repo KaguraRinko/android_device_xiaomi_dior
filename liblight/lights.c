@@ -93,7 +93,7 @@ char const*const BLUE_DUTY_STEPS_FILE
 #define LED_DUTY_STEPS       60
 
 // Brightness ramp up/down time for blinking
-#define LED_RAMP_MS          48
+#define LED_RAMP_MS          500
 
 /**
  * device methods
