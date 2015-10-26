@@ -447,6 +447,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
     start mpdecision
 
+    setprop sys.io.scheduler bfq
+
 # CyanogenMod Performance Profiles
 
 # Powersave
