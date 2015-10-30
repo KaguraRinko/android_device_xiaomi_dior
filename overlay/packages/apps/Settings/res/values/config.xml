@@ -16,8 +16,10 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- This is used to determine whether to hide the
-         preferred application install location settings-->
-    <bool name="config_hide_app_install_location" translatable="false">false</bool>
+    <bool name="config_show_volumeRockerWake">true</bool>
+    <!-- Regulatory Info -->
+    <!-- Whether to show a preference item for regulatory information in About phone -->
+    <bool name="config_show_regulatory_info">true</bool>
 
 </resources>
+
