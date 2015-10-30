@@ -22,9 +22,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-$(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.dior \
@@ -199,6 +196,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    camera.msm8226 \
     libxml2
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -263,3 +261,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+
+$(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
