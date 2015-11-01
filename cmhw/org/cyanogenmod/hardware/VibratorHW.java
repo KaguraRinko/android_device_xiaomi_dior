@@ -32,11 +32,11 @@ public class VibratorHW {
     }
 
     public static int getMinIntensity()  {
-        return 80;
+        return 50;
     }
 
     public static int getWarningThreshold()  {
-        return 65;
+        return 85;
     }
 
     public static int getCurIntensity()  {
@@ -44,7 +44,7 @@ public class VibratorHW {
     }
 
     public static int getDefaultIntensity()  {
-        return 50;
+        return 70;
     }
 
     public static boolean setIntensity(int intensity)  {
