@@ -3,7 +3,7 @@
 
 # CMHW
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
-/sys/devices/gpio_keys.96/disabled_keys       u:object_r:vibeamp_sysfs:s0
+/sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off      u:object_r:display_sysfs:s0
 
 # Sensors
 /persist/misc/sensors(/.*)?                   u:object_r:sensors_persist_file:s0

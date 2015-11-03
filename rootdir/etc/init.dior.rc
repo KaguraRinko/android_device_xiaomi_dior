@@ -90,6 +90,11 @@ on boot
     chown system system /sys/class/leds/torch-light/brightness
     chown system system /sys/class/leds/button-backlight/brightness
 
+	# Key disabler
+    chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
+    chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
+    restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
+
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
 
