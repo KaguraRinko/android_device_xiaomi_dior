@@ -86,7 +86,7 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Hardware tunables
-BOARD_HARDWARE_CLASS := device/xiaomi/dior/cmhw/
+BOARD_HARDWARE_CLASS := device/xiaomi/dior/cmhw
 
 # Init
 TARGET_UNIFIED_DEVICE := true
