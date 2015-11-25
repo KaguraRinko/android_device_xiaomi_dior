@@ -112,6 +112,8 @@ on boot
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
+    chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
+    chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
 
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
@@ -171,6 +173,10 @@ on post-fs-data
     mkdir /persist/misc
     mkdir /persist/misc/sensors
     chmod 775 /persist/misc/sensors
+
+    # Create FM directories for patchdownloader
+    mkdir /data/misc/fm 0770 system system
+    chmod 0770 /data/misc/fm
 
     setprop vold.post_fs_data_done 1
 
@@ -374,6 +380,13 @@ service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
     user system
     group gps net_raw
+
+service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
+   class late_start
+   user system
+   group system
+   disabled
+   oneshot
 
 service charger /sbin/healthd -c
     class charger

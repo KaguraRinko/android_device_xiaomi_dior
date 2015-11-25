@@ -105,10 +105,11 @@ PRODUCT_PACKAGES += \
     FM2 \
     FMRecord \
     libqcomfm_jni \
-    qcom.fmradio
+    qcom.fmradio \
+    qcom.fmradio.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.fm.transmitter=false
+    hw.fm.internal_antenna=false
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -211,6 +212,7 @@ PRODUCT_PACKAGES += \
     fstab.dior \
     init.dior.rc \
     init.dior.usb.rc \
+    init.qcom.fm.sh \
     ueventd.dior.rc
 
 # Sensors
