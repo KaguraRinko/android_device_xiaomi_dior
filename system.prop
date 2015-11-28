@@ -5,7 +5,7 @@ ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=true
 persist.audio.fluence.speaker=false
-av.offload.enable=false
+audio.offload.video=false
 use.voice.path.for.pcm.voip=true
 
 # Display
@@ -36,6 +36,7 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.dont_use_dsd=true
 persist.radio.msgtunnel.start=false
 ro.telephony.call_ring.multiple=false
+ro.telephony.ril.config=simactivation
 
 # OTA
 #cm.updater.uri=http://ota.randomdroids.com/api

@@ -36,39 +36,17 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
     mkdir /firmware 0771 system system
-    
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
-    # External SD card
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-    symlink /storage/sdcard1 /mnt/external_sd
-    symlink /storage/sdcard1 /external_sd
-
-    # USB OTG drive
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
-    symlink /storage/usbdisk /mnt/usb_storage
-    symlink /storage/usbdisk /usb_storage
+    # Symbols required for blobs
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
 
 on fs
     mount_all fstab.dior
     restorecon_recursive /persist
-
-    setprop ro.crypto.fuse_sdcard true
 
 on early-boot
     # Set RLIMIT_MEMLOCK to 64MB
@@ -142,7 +120,6 @@ on boot
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
 on post-fs-data
-    mkdir /data/media 0770 media_rw media_rw
 
     # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
@@ -328,17 +305,6 @@ service ril-daemon2 /system/bin/rild -c 2
 on property:persist.radio.multisim.config=none
     start ril-daemon2
 
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
-
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
@@ -417,7 +383,6 @@ on charger
     write /sys/devices/system/cpu/cpu3/online 0
 
 on property:sys.boot_completed=1
-    write /sys/block/mmcblk0/queue/scheduler bfq
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
@@ -458,64 +423,12 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
-    start mpdecision
-
-    setprop sys.io.scheduler bfq
-
-# CyanogenMod Performance Profiles
-
-# Powersave
-on property:sys.perf.profile=0
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor powersave
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor powersave
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor powersave
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1190400
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1190400
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1190400
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1190400
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
-    write /sys/class/devfreq/qcom,cpubw.64/governor powersave
-    start mpdecision
-
-# Balanced
-on property:sys.perf.profile=1
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor ondemand
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1401600
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/class/devfreq/qcom,cpubw.64/governor msm_cpufreq
-    start mpdecision
 
-# Performance
-on property:sys.perf.profile=2
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1593600
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1593600
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1593600
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor performance
-    write /sys/class/devfreq/qcom,cpubw.64/governor performance
+    setprop sys.io.scheduler bfq
     start mpdecision
 
 # Set different perfer network type for different phone type

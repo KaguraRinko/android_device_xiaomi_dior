@@ -91,11 +91,11 @@ BOARD_HARDWARE_CLASS := device/xiaomi/dior/cmhw
 # Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.c
+TARGET_LIBINIT_DEFINES_FILE := device/xiaomi/dior/init/init_dior.cpp
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
-TARGET_KERNEL_CONFIG := dior_xenon_defconfig
+TARGET_KERNEL_CONFIG := dior_custom_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=dior user_debug=31 msm_rtb.filter=0x37
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -137,6 +137,12 @@ BOARD_SEPOLICY_DIRS += device/xiaomi/dior/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
+
+# Keymaster
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# Radio
+TARGET_RIL_VARIANT := caf
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true

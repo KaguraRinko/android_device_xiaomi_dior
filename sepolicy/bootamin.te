@@ -1,2 +1,0 @@
-#============= bootanim ==============
-allow bootanim socket_device:sock_file write;
