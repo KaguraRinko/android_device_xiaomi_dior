@@ -420,8 +420,10 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1401600
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1401600
-
-    setprop sys.io.scheduler bfq
+    write /sys/devices/system/cpu/sched_mc_power_savings 1
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/class/devfreq/qcom,cpubw.64/governor msm_cpufreq
+    setprop sys.io.scheduler cfq
     start mpdecision
 
 # Set different perfer network type for different phone type
