@@ -213,7 +213,6 @@ PRODUCT_PACKAGES += \
     fstab.dior \
     init.dior.rc \
     init.dior.usb.rc \
-    init.qcom.fm.sh \
     ueventd.dior.rc
 
 # Sensors
