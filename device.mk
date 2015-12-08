@@ -255,3 +255,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0
+
+# IO Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
+
