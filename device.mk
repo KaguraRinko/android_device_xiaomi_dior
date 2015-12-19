@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2015 The CyanogenMod Project
+# Copyright (C) 2015 The MoKee OpenSource Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -25,7 +26,7 @@ TARGET_SCREEN_WIDTH := 720
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# ART
+# Art
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-filter=speed \
     dalvik.vm.dex2oat-swap=false \
@@ -105,11 +106,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs
-
-# FM
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
 
 # GPS
 PRODUCT_PACKAGES += \
