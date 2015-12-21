@@ -70,6 +70,10 @@ on boot
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
     chmod 0664 /sys/class/graphics/fb0/dynamic_fps
 
+    # msm_thermal (for power HAL usage)
+    chown system system /sys/kernel/msm_thermal/user_maxfreq
+    chmod 0660 /sys/kernel/msm_thermal/user_maxfreq
+
     chown system system /sys/class/leds/torch-light/brightness
     chown system system /sys/class/leds/button-backlight/brightness
 
