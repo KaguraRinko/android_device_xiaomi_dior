@@ -74,10 +74,17 @@ on boot
     chown system system /sys/kernel/msm_thermal/user_maxfreq
     chmod 0660 /sys/kernel/msm_thermal/user_maxfreq
 
+    # Set light thermal restrictions while running bootanimation
+    # [throttle_freq, throttle_temp, unthrottle_temp]
+    write /sys/kernel/msm_thermal/low_thresh "1593600 45 43"
+    write /sys/kernel/msm_thermal/mid_thresh "1344000 50 47"
+    write /sys/kernel/msm_thermal/high_thresh "1094400 55 53"
+    write /sys/kernel/msm_thermal/enabled 1
+
     chown system system /sys/class/leds/torch-light/brightness
     chown system system /sys/class/leds/button-backlight/brightness
 
-	# Key disabler
+    # Key disabler
     chown root system /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
     chmod 0664 /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
     restorecon /sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off
