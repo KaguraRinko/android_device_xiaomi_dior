@@ -107,6 +107,11 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     resize2fs
 
+# FM
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8226
