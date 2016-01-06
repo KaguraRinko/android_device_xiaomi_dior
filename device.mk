@@ -250,7 +250,7 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    wcnss_service
+    wcnss_service \
     libwcnss_qmi
 
 PRODUCT_PROPERTY_OVERRIDES += \
