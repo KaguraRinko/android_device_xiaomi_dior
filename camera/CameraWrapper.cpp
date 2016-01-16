@@ -33,6 +33,8 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
+#define FRONT_CAMERA    1
+
 static android::Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
@@ -99,8 +101,13 @@ static int check_vendor_module()
 
 static char *camera_fixup_getparams(int id, const char *settings)
 {
+    const char *supportedSceneModes = "auto,asd,landscape,snow,beach,sunset,night,portrait,backlight,sports,steadyphoto,flowers,candlelight,fireworks,party,night-portrait,theatre,action,AR";
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
+    
+    if (id == FRONT_CAMERA){
+        params.set(android::CameraParameters::KEY_SUPPORTED_SCENE_MODES, supportedSceneModes);    /* Remove useless HDR mode in front camera */
+    }
 
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
@@ -151,7 +158,12 @@ static char *camera_fixup_setparams(int id, const char *settings)
 
     /* Disable flash in HDR mode */
     if (hdrMode && !videoMode) {
+        params.set("ae-bracket-hdr", "AE-Bracket");
+        params.set("capture-burst-exposures", "-6,8,0");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
+    }  else  {
+        params.set("ae-bracket-hdr", "Off");
+        params.set("capture-burst-exposures", "0,0,0");
     }
 
 #if !LOG_NDEBUG
