@@ -1,3 +1,0 @@
-#============= mpdecision ==============
-allow mpdecision socket_device:dir { write remove_name add_name };
-allow mpdecision socket_device:sock_file { create unlink setattr };

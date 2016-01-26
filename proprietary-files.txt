@@ -181,7 +181,6 @@ vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
 
 # Perf
-bin/mpdecision
 vendor/lib/libqc-opt.so
 
 # Qualcomm

@@ -89,7 +89,8 @@ on boot
     chmod 0644 /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    start mpdecision
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 
     # Enable writing to led blink node from userspace
     chown system system /sys/class/leds/red/blink
@@ -105,13 +106,6 @@ on boot
     # Dynamic FPS
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
     chmod 0664 /sys/class/graphics/fb0/dynamic_fps
-
-    # Set light thermal restrictions while running bootanimation
-    # [throttle_freq, throttle_temp, unthrottle_temp]
-    write /sys/kernel/msm_thermal/low_thresh "1593600 45 43"
-    write /sys/kernel/msm_thermal/mid_thresh "1344000 50 47"
-    write /sys/kernel/msm_thermal/high_thresh "1094400 55 53"
-    write /sys/kernel/msm_thermal/enabled 1
 
     chown system system /sys/class/leds/torch-light/brightness
     chown system system /sys/class/leds/button-backlight/brightness
@@ -356,16 +350,6 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp
-    user root
-    group root system
-    disabled
-
-#service thermal-engine /system/bin/thermal-engine
-#    class main
-#    user root
-#    group root
-
 service qseecomd /system/bin/qseecomd
     class core
     user root
@@ -408,7 +392,6 @@ on charger
     write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
-    write /sys/kernel/msm_thermal/enabled 0
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
@@ -420,11 +403,9 @@ on charger
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
-    write /sys/kernel/msm_thermal/enabled 1
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
-    start mpdecision
 
 on property:sys.boot_completed=1
     # Enable Power modes and set the CPU Freq Sampling rates
