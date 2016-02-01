@@ -27,6 +27,7 @@
 #include "power.h"
 
 #define CPUFREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/"
+#define MSM_THERMAL "/sys/kernel/msm_thermal/user_maxfreq"
 #define INTERACTIVE_PATH "/sys/devices/system/cpu/cpufreq/interactive/"
 
 static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
@@ -143,6 +144,8 @@ static void set_power_profile(int profile)
                     profiles[profile].target_loads);
     sysfs_write_int(CPUFREQ_PATH "scaling_max_freq",
                     profiles[profile].scaling_max_freq);
+    sysfs_write_int(MSM_THERMAL "user_maxfreq",
+                    profiles[profile].user_maxfreq);
 
     current_power_profile = profile;
 }
