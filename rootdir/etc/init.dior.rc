@@ -218,6 +218,11 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group system
+    
+service rfs_access /system/bin/rfs_access
+    class core
+    user system
+    group system net_raw
 
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
