@@ -3,7 +3,7 @@
 
 # MKHW
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
-/sys/bus/i2c/drivers/atmel_mxt_ts/5-004b/keys_off      u:object_r:display_sysfs:s0
+/sys/devices/gpio_keys.96/disabled_keys       u:object_r:vibeamp_sysfs:s0
 
 # GPS
 /system/bin/gsiff_daemon                      u:object_r:location_exec:s0
