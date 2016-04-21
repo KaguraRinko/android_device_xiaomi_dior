@@ -29,6 +29,7 @@
 #define CPUFREQ_PATH "/sys/devices/system/cpu/cpu0/cpufreq/"
 #define MSM_THERMAL "/sys/kernel/msm_thermal/user_maxfreq"
 #define INTERACTIVE_PATH "/sys/devices/system/cpu/cpufreq/interactive/"
+#define WAKE_GESTURE_PATH "/sys/android_touch/doubletap2wake"
 
 static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 static int boostpulse_fd = -1;
@@ -150,6 +151,18 @@ static void set_power_profile(int profile)
     current_power_profile = profile;
 }
 
+static void set_feature(struct power_module *module, feature_t feature, int state)
+{
+    switch (feature) {
+    case POWER_FEATURE_DOUBLE_TAP_TO_WAKE:
+        sysfs_write_str(WAKE_GESTURE_PATH, state ? "1\n" : "0\n");
+        break;
+    default:
+        ALOGW("Error setting the feature, it doesn't exist %d\n", feature);
+        break;
+    }
+}
+
 static void power_hint(__attribute__((unused)) struct power_module *module,
                        power_hint_t hint, void *data)
 {
@@ -220,5 +233,6 @@ struct power_module HAL_MODULE_INFO_SYM = {
     .init = power_init,
     .setInteractive = power_set_interactive,
     .powerHint = power_hint,
-    .getFeature = get_feature
+    .getFeature = get_feature,
+    .setFeature = set_feature,
 };
