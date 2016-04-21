@@ -1,15 +1,17 @@
 # Camera
-/data/cam_socket.*                            u:object_r:camera_socket:s0
+/data/cam_socket.*                                 u:object_r:camera_socket:s0
 
-# MKHW
-/sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
-/sys/devices/gpio_keys.75/disabled_keys       u:object_r:vibeamp_sysfs:s0
+# Vibrator
+/sys/class/timed_output/vibrator/amp               u:object_r:vibeamp_sysfs:s0
+
+# Keydisabler
+/sys/devices/gpio_keys.75/disabled_keys            u:object_r:display_sysfs:s0
 
 # GPS
-/system/bin/gsiff_daemon                      u:object_r:location_exec:s0
+/system/bin/gsiff_daemon                           u:object_r:location_exec:s0
 
 # Sensors
-/persist/misc/sensors(/.*)?                   u:object_r:sensors_persist_file:s0
+/persist/misc/sensors(/.*)?                        u:object_r:sensors_persist_file:s0
 
 # Display
 /sys/devices/virtual/graphics/fb0/color_enhance    u:object_r:display_sysfs:s0
