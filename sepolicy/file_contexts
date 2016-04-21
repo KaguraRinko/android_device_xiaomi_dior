@@ -7,6 +7,9 @@
 # Keydisabler
 /sys/devices/gpio_keys.75/disabled_keys            u:object_r:display_sysfs:s0
 
+# Double tap to wake
+/sys/android_touch/doubletap2wake                  u:object_r:sysfs_hardware:s0
+
 # GPS
 /system/bin/gsiff_daemon                           u:object_r:location_exec:s0
 

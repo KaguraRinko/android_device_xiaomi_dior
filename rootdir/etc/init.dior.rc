@@ -126,6 +126,10 @@ on boot
     # Key disabler
     chown system system /sys/devices/gpio_keys.75/disabled_keys
     chmod 0666 /sys/devices/gpio_keys.75/disabled_keys
+    
+    # Double tap to wake
+    chown system system /sys/android_touch/doubletap2wake
+    chmod 0664 /sys/android_touch/doubletap2wake
 
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
