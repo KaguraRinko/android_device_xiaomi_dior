@@ -15,6 +15,3 @@
 
 # Sensors
 /persist/misc/sensors(/.*)?                        u:object_r:sensors_persist_file:s0
-
-# Display
-/sys/devices/virtual/graphics/fb0/color_enhance    u:object_r:display_sysfs:s0
