@@ -32,7 +32,7 @@ vendor/lib/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon
-lib/hw/camera.msm8226.so
+lib/hw/camera.vendor.msm8226.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmm-qcamera.so
@@ -44,12 +44,8 @@ vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_ofilm_oty5f03_eeprom.so
-vendor/lib/libmmcamera_ofilm_owt8a01a_eeprom.so
-vendor/lib/libmmcamera_ofilm_q1v05a_eeprom.so
 vendor/lib/libmmcamera_ov9760_q1v05a.so
-vendor/lib/libmmcamera_s5k3h2yx_omi8a02a.so
 vendor/lib/libmmcamera_s5k3h2yx_owt8a01a.so
-vendor/lib/libmmcamera_s5k3h2yx_q8s02m.so
 vendor/lib/libmmcamera_tintless_algo.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_tuning.so
