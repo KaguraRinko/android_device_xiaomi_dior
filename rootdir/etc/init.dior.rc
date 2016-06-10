@@ -91,6 +91,7 @@ on boot
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    start mpdecision
 
     # Enable writing to led blink node from userspace
     chown system system /sys/class/leds/red/blink
@@ -366,15 +367,15 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-#service mpdecision /system/bin/mpdecision --avg_comp
-#    user root
-#    group root system
-#    disabled
+service mpdecision /system/bin/mpdecision --avg_comp
+    user root
+    group root system
+    disabled
 
-#service thermal-engine /system/bin/thermal-engine
-#    class main
-#    user root
-#    group root
+service thermal-engine /system/bin/thermal-engine
+    class main
+    user root
+    group root
 
 service qseecomd /system/bin/qseecomd
     class core
@@ -434,6 +435,7 @@ on charger
     write /sys/devices/system/cpu/cpu1/online 0
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
+    start mpdecision
 
 on property:sys.boot_completed=1
     # Enable Power modes and set the CPU Freq Sampling rates
