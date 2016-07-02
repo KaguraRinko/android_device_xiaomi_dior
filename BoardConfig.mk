@@ -98,10 +98,6 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# MK Hardware
-BOARD_USES_MOKEE_HARDWARE := true
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/mkhw/
-
 # Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
@@ -126,6 +122,11 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Memory
 MALLOC_IMPL := dlmalloc
+
+# MK Hardware
+BOARD_HARDWARE_CLASS := \
+    hardware/mokee/mkhw \
+    $(LOCAL_PATH)/mkhw
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8226
