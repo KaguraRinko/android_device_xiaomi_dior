@@ -70,9 +70,6 @@ PRODUCT_PACKAGES += \
     init.qcom.fm.sh
 
 # Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
 PRODUCT_PACKAGES += \
     Snap \
     libxml2 \
