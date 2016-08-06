@@ -22,10 +22,10 @@ import java.io.File;
 
 public class VibratorHW {
 
-    private static String AMP_PATH = "/sys/class/timed_output/vibrator/amp";
+    private static String LEVEL_PATH = "/sys/class/timed_output/vibrator/amp";
 
     public static boolean isSupported() {
-        return new File(AMP_PATH).exists();
+        return new File(LEVEL_PATH).exists();
     }
 
     public static int getMaxIntensity()  {
@@ -33,22 +33,22 @@ public class VibratorHW {
     }
 
     public static int getMinIntensity()  {
-        return 80;
+        return 50;
     }
 
     public static int getWarningThreshold()  {
-        return 80;
+        return 85;
     }
 
     public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(AMP_PATH));
+        return Integer.parseInt(FileUtils.readOneLine(LEVEL_PATH));
     }
 
     public static int getDefaultIntensity()  {
-        return 90;
+        return 70;
     }
 
     public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(AMP_PATH, String.valueOf(intensity));
+        return FileUtils.writeLine(LEVEL_PATH, String.valueOf(intensity));
     }
 }

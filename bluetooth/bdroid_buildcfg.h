@@ -17,7 +17,7 @@
 
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
-#define BTM_DEF_LOCAL_NAME   "HM NOTE LTE"
+#define BTM_DEF_LOCAL_NAME   "Xiaomi HM NOTE 1LTE"
 // Disables read remote device feature
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_L2CAP_CHANNELS    16

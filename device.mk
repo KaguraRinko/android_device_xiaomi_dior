@@ -23,16 +23,11 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-$(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-$(call inherit-product, device/qcom/common/Android.mk)
 
-# Art
+# ART
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=speed \
-    dalvik.vm.dex2oat-swap=false \
-    dalvik.vm.image-dex2oat-filter=speed
+    dalvik.vm.dex2oat-flags=--no-watch-dog
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -70,6 +65,9 @@ PRODUCT_PACKAGES += \
     init.qcom.fm.sh
 
 # Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
+
 PRODUCT_PACKAGES += \
     Snap \
     libxml2 \
@@ -89,9 +87,7 @@ PRODUCT_PACKAGES += \
     copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
-    memtrack.msm8226 \
-    liboverlay \
-    libemoji
+    memtrack.msm8226
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -116,16 +112,6 @@ PRODUCT_PACKAGES += \
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8226
-
-PRODUCT_PACKAGES += \
-    gps.conf \
-    flp.conf \
-    izat.conf \
-    quipc.conf \
-    sap.conf
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.agps_provider=1
 
 # IPC router
 PRODUCT_COPY_FILES += \
@@ -157,18 +143,12 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-# Media
+# Media & Audio
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libdivxdrmdecrypt \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
-    libstagefrighthw
+      libOmxCore \
+      libOmxVdec \
+      libOmxVenc \
+      libstagefrighthw
 
 # MKActions
 PRODUCT_PACKAGES += \
@@ -197,6 +177,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.software.print.xml:system/etc/permissions/android.software.print.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
@@ -205,10 +186,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm8226
 
-# Qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true \
-    ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -225,11 +204,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
+# Time services
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.timed.enable=true
 
 # Wifi
 PRODUCT_PACKAGES += \
+    WCNSS_cfg.dat \
+    WCNSS_qcom_cfg.ini \
     hostapd_default.conf \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf \
@@ -237,10 +219,6 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_wlan_nv_h3gbl.bin \
     WCNSS_qcom_wlan_nv_h3td.bin \
     WCNSS_qcom_wlan_nv_h3w.bin
-
-PRODUCT_COPY_FILES += \
-    kernel/xiaomi/dior/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
-    kernel/xiaomi/dior/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
 
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
@@ -252,19 +230,15 @@ PRODUCT_PACKAGES += \
     libcurl \
     libqsap_sdk \
     libQWiFiSoftApCfg \
-    wcnss_service \
-    libwcnss_qmi
+    libwcnss_qmi \
+    wcnss_service
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     persist.debug.wfd.enable=1 \
-    persist.sys.wfd.virtual=0
-
-# IO Scheduler
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.io.scheduler=bfq
+    persist.sys.wfd.virtual=0 \
+    ro.disableWifiApFirmwareReload=true
 
 # LTE, GSM/WCDMA
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.get_imsi_from_sim=true
-

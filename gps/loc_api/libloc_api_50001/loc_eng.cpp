@@ -118,7 +118,6 @@ static loc_param_s_type loc_parameter_table[] =
   {"QUIPC_ENABLED",                  &gps_conf.QUIPC_ENABLED,                  NULL, 'n'},
   {"LPP_PROFILE",                    &gps_conf.LPP_PROFILE,                    NULL, 'n'},
   {"A_GLONASS_POS_PROTOCOL_SELECT",  &gps_conf.A_GLONASS_POS_PROTOCOL_SELECT,  NULL, 'n'},
-  {"SENSOR_PROVIDER",                &sap_conf.SENSOR_PROVIDER,                NULL, 'n'},
 };
 
 static void loc_default_parameters(void)
@@ -161,9 +160,6 @@ static void loc_default_parameters(void)
 
    /*By default no positioning protocol is selected on A-GLONASS system*/
    gps_conf.A_GLONASS_POS_PROTOCOL_SELECT = 0;
-
-   /* default provider is SSC */
-   sap_conf.SENSOR_PROVIDER = 1;
 }
 
 // 2nd half of init(), singled out for
@@ -501,20 +497,18 @@ struct LocEngLppConfig : public LocMsg {
 struct LocEngSensorControlConfig : public LocMsg {
     LocEngAdapter* mAdapter;
     const int mSensorsDisabled;
-    const int mSensorProvider;
     inline LocEngSensorControlConfig(LocEngAdapter* adapter,
-                                     int sensorsDisabled, int sensorProvider) :
-        LocMsg(), mAdapter(adapter), mSensorsDisabled(sensorsDisabled),
-        mSensorProvider(sensorProvider)
+                                     int sensorsDisabled) :
+        LocMsg(), mAdapter(adapter), mSensorsDisabled(sensorsDisabled)
     {
         locallog();
     }
     inline virtual void proc() const {
-        mAdapter->setSensorControlConfig(mSensorsDisabled, mSensorProvider);
+        mAdapter->setSensorControlConfig(mSensorsDisabled);
     }
     inline  void locallog() const {
-        LOC_LOGV("LocEngSensorControlConfig - Sensors Disabled: %d, Sensor Provider: %d",
-                 mSensorsDisabled, mSensorProvider);
+        LOC_LOGV("LocEngSensorControlConfig - Sensors Disabled: %d",
+                 mSensorsDisabled);
     }
     inline virtual void log() const {
         locallog();
@@ -759,10 +753,7 @@ void LocEngReportPosition::proc() const {
         }
 
         if (locEng->generateNmea &&
-            mLocation.position_source == ULP_LOCATION_IS_FROM_GNSS &&
-            mTechMask & (LOC_POS_TECH_MASK_SATELLITE |
-                         LOC_POS_TECH_MASK_SENSORS |
-                         LOC_POS_TECH_MASK_HYBRID))
+            mLocation.position_source == ULP_LOCATION_IS_FROM_GNSS)
         {
             unsigned char generate_nmea = reported &&
                                           (mStatus != LOC_SESS_FAILURE);
@@ -1314,6 +1305,7 @@ struct LocEngInit : public LocMsg {
     }
     inline virtual void proc() const {
         loc_eng_reinit(*mLocEng);
+        mLocEng->adapter->setGpsLock(1);
     }
     inline void locallog() const
     {
@@ -1333,11 +1325,11 @@ struct LocEngAtlOpenSuccess : public LocMsg {
     AgpsStateMachine* mStateMachine;
     const int mLen;
     char* mAPN;
-    const AGpsBearerType mBearerType;
+    const ApnIpType mBearerType;
     inline LocEngAtlOpenSuccess(AgpsStateMachine* statemachine,
                                 const char* name,
                                 int len,
-                                AGpsBearerType btype) :
+                                ApnIpType btype) :
         LocMsg(),
         mStateMachine(statemachine), mLen(len),
         mAPN(new char[len+1]), mBearerType(btype)
@@ -1563,8 +1555,7 @@ static int loc_eng_reinit(loc_eng_data_s_type &loc_eng_data)
         LocEngAdapter* adapter = loc_eng_data.adapter;
         adapter->sendMsg(new LocEngSuplVer(adapter, gps_conf.SUPL_VER));
         adapter->sendMsg(new LocEngLppConfig(adapter, gps_conf.LPP_PROFILE));
-        adapter->sendMsg(new LocEngSensorControlConfig(adapter, sap_conf.SENSOR_USAGE,
-                                                       sap_conf.SENSOR_PROVIDER));
+        adapter->sendMsg(new LocEngSensorControlConfig(adapter, sap_conf.SENSOR_USAGE));
         adapter->sendMsg(new LocEngAGlonassProtocol(adapter, gps_conf.A_GLONASS_POS_PROTOCOL_SELECT));
 
         /* Make sure at least one of the sensor property is specified by the user in the gps.conf file. */
@@ -1880,7 +1871,7 @@ int loc_eng_inject_location(loc_eng_data_s_type &loc_eng_data, double latitude,
     ENTRY_LOG_CALLFLOW();
     INIT_CHECK(loc_eng_data.adapter, return -1);
     LocEngAdapter* adapter = loc_eng_data.adapter;
-    if(adapter->mSupportsPositionInjection)
+    if(!adapter->mCPIEnabled)
     {
         adapter->sendMsg(new LocEngInjectLocation(adapter, latitude, longitude,
                                                   accuracy));
@@ -2096,7 +2087,7 @@ void loc_eng_agps_init(loc_eng_data_s_type &loc_eng_data, AGpsExtCallbacks* call
                                                       AGPS_TYPE_SUPL,
                                                       false);
 
-        if (adapter->mSupportsAgpsRequests) {
+        if (adapter->mAgpsEnabled) {
             loc_eng_data.adapter->sendMsg(new LocEngDataClientInit(&loc_eng_data));
 
             loc_eng_dmn_conn_loc_api_server_launch(callbacks->create_thread_cb,
@@ -2157,7 +2148,7 @@ SIDE EFFECTS
 
 ===========================================================================*/
 int loc_eng_agps_open(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType,
-                     const char* apn, AGpsBearerType bearerType)
+                     const char* apn, ApnIpType bearerType)
 {
     ENTRY_LOG_CALLFLOW();
     INIT_CHECK(loc_eng_data.adapter && loc_eng_data.agps_status_cb,

@@ -1,4 +1,4 @@
-/* Copyright (c) 2011-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2013, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -52,34 +52,6 @@ void LocInternalAdapter::stopFixInt() {
 void LocInternalAdapter::getZppInt() {
     sendMsg(new LocEngGetZpp(mLocEngAdapter));
 }
-
-LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
-                             void* owner, ContextBase* context,
-                             MsgTask::tCreate tCreator) :
-    LocAdapterBase(mask,
-                   //Get the AFW context if VzW context has not already been intialized in
-                   //loc_ext
-                   context == NULL?
-                   LocDualContext::getLocFgContext(tCreator,
-                                                   LocDualContext::mLocationHalName)
-                   :context),
-    mOwner(owner), mInternalAdapter(new LocInternalAdapter(this)),
-    mUlp(new UlpProxyBase()), mNavigating(false),
-    mSupportsAgpsRequests(false),
-    mSupportsPositionInjection(false)
-{
-    memset(&mFixCriteria, 0, sizeof(mFixCriteria));
-    mFixCriteria.mode = LOC_POSITION_MODE_INVALID;
-    LOC_LOGD("LocEngAdapter created");
-}
-
-inline
-LocEngAdapter::~LocEngAdapter()
-{
-    delete mInternalAdapter;
-    LOC_LOGV("LocEngAdapter deleted");
-}
-
 void LocInternalAdapter::setUlpProxy(UlpProxyBase* ulp) {
     struct LocSetUlpProxy : public LocMsg {
         LocAdapterBase* mAdapter;
@@ -97,6 +69,32 @@ void LocInternalAdapter::setUlpProxy(UlpProxyBase* ulp) {
     sendMsg(new LocSetUlpProxy(mLocEngAdapter, ulp));
 }
 
+LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
+                             void* owner, ContextBase* context,
+                             MsgTask::tCreate tCreator) :
+    LocAdapterBase(mask,
+                   //Get the AFW context if VzW context has not already been intialized in
+                   //loc_ext
+                   context == NULL?
+                   LocDualContext::getLocFgContext(tCreator,
+                                                   LocDualContext::mLocationHalName)
+                   :context),
+    mOwner(owner), mInternalAdapter(new LocInternalAdapter(this)),
+    mUlp(new UlpProxyBase()), mNavigating(false),
+    mAgpsEnabled(false), mCPIEnabled(false)
+{
+    memset(&mFixCriteria, 0, sizeof(mFixCriteria));
+    mFixCriteria.mode = LOC_POSITION_MODE_INVALID;
+    LOC_LOGD("LocEngAdapter created");
+}
+
+inline
+LocEngAdapter::~LocEngAdapter()
+{
+    delete mInternalAdapter;
+    LOC_LOGV("LocEngAdapter deleted");
+}
+
 void LocEngAdapter::setUlpProxy(UlpProxyBase* ulp)
 {
     if (ulp == mUlp) {
@@ -104,24 +102,18 @@ void LocEngAdapter::setUlpProxy(UlpProxyBase* ulp)
         //and we get the same object back for UlpProxyBase . Do nothing
         return;
     }
-
+    delete mUlp;
     LOC_LOGV("%s] %p", __func__, ulp);
     if (NULL == ulp) {
-        LOC_LOGE("%s:%d]: ulp pointer is NULL", __func__, __LINE__);
         ulp = new UlpProxyBase();
     }
-
-    if (LOC_POSITION_MODE_INVALID != mUlp->mPosMode.mode) {
-        // need to send this mode and start msg to ULP
-        ulp->sendFixMode(mUlp->mPosMode);
-    }
-
-    if(mUlp->mFixSet) {
-        ulp->sendStartFix();
-    }
-
-    delete mUlp;
     mUlp = ulp;
+
+    if (LOC_POSITION_MODE_INVALID != mFixCriteria.mode) {
+        // need to send this mode and start msg to ULP
+        mUlp->sendFixMode(mFixCriteria);
+        mUlp->sendStartFix();
+    }
 }
 
 void LocInternalAdapter::reportPosition(UlpLocation &location,
@@ -211,84 +203,84 @@ bool LocEngAdapter::reportXtraServer(const char* url1,
                                         const char* url3,
                                         const int maxlength)
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         sendMsg(new LocEngReportXtraServer(mOwner, url1,
                                            url2, url3, maxlength));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::requestATL(int connHandle, AGpsType agps_type)
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         sendMsg(new LocEngRequestATL(mOwner,
                                      connHandle, agps_type));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::releaseATL(int connHandle)
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         sendMsg(new LocEngReleaseATL(mOwner, connHandle));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::requestXtraData()
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         sendMsg(new LocEngRequestXtra(mOwner));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::requestTime()
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         sendMsg(new LocEngRequestTime(mOwner));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::requestNiNotify(GpsNiNotification &notif, const void* data)
 {
-    if (mSupportsAgpsRequests) {
+    if (mAgpsEnabled) {
         notif.size = sizeof(notif);
         notif.timeout = LOC_NI_NO_RESPONSE_TIME;
 
         sendMsg(new LocEngRequestNi(mOwner, notif, data));
     }
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::requestSuplES(int connHandle)
 {
-    if (mSupportsAgpsRequests)
+    if (mAgpsEnabled)
         sendMsg(new LocEngRequestSuplEs(mOwner, connHandle));
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::reportDataCallOpened()
 {
-    if(mSupportsAgpsRequests)
+    if(mAgpsEnabled)
         sendMsg(new LocEngSuplEsOpened(mOwner));
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
 bool LocEngAdapter::reportDataCallClosed()
 {
-    if(mSupportsAgpsRequests)
+    if(mAgpsEnabled)
         sendMsg(new LocEngSuplEsClosed(mOwner));
-    return mSupportsAgpsRequests;
+    return mAgpsEnabled;
 }
 
 inline
@@ -302,3 +294,4 @@ void LocEngAdapter::handleEngineUpEvent()
 {
     sendMsg(new LocEngUp(mOwner));
 }
+

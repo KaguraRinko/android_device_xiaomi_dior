@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Linux Foundation. All rights reserved.
+/* Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -26,34 +26,34 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+#ifndef LOC_ENG_DATA_SERVER_H
+#define LOC_ENG_DATA_SERVER_H
 
-#ifndef LOC_ADAPTER_PROXY_BASE_H
-#define LOC_ADAPTER_PROXY_BASE_H
+#include "loc_eng_dmn_conn_thread_helper.h"
 
-#include <ContextBase.h>
-#include <gps_extended.h>
+#ifdef _ANDROID_
 
-namespace loc_core {
+#define GPSONE_LOC_API_Q_PATH "/data/misc/gpsone_d/gpsone_loc_api_q"
+#define GPSONE_LOC_API_RESP_Q_PATH "/data/misc/gpsone_d/gpsone_loc_api_resp_q"
+#define QUIPC_CTRL_Q_PATH "/data/misc/gpsone_d/quipc_ctrl_q"
+#define MSAPM_CTRL_Q_PATH "/data/misc/gpsone_d/msapm_ctrl_q"
+#define MSAPU_CTRL_Q_PATH "/data/misc/gpsone_d/msapu_ctrl_q"
 
-class LocAdapterProxyBase {
-private:
-    const LocAdapterBase *mLocAdapterBase;
-protected:
-    inline LocAdapterProxyBase(const LOC_API_ADAPTER_EVENT_MASK_T mask,
-                   ContextBase* context):
-                   mLocAdapterBase(new LocAdapterBase(mask, context, this)) {
-    }
-    inline virtual ~LocAdapterProxyBase() {
-        delete mLocAdapterBase;
-    }
-    ContextBase* getContext() const {
-        return mLocAdapterBase->getContext();
-    }
-public:
-    inline virtual void handleEngineUpEvent() {};
-    inline virtual void handleEngineDownEvent() {};
-};
+#else
 
-} // namespace loc_core
+#define GPSONE_LOC_API_Q_PATH "/tmp/gpsone_loc_api_q"
+#define GPSONE_LOC_API_RESP_Q_PATH "/tmp/gpsone_loc_api_resp_q"
+#define QUIPC_CTRL_Q_PATH "/tmp/quipc_ctrl_q"
+#define MSAPM_CTRL_Q_PATH "/tmp/msapm_ctrl_q"
+#define MSAPU_CTRL_Q_PATH "/tmp/msapu_ctrl_q"
 
-#endif //LOC_ADAPTER_PROXY_BASE_H
+#endif
+
+int loc_eng_dmn_conn_loc_api_server_launch(thelper_create_thread   create_thread_cb,
+    const char * loc_api_q_path, const char * ctrl_q_path, void *agps_handle);
+int loc_eng_dmn_conn_loc_api_server_unblock(void);
+int loc_eng_dmn_conn_loc_api_server_join(void);
+int loc_eng_dmn_conn_loc_api_server_data_conn(int, int);
+
+#endif /* LOC_ENG_DATA_SERVER_H */
+
