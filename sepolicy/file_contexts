@@ -7,6 +7,10 @@
 # Keydisabler
 /sys/devices/gpio_keys.75/disabled_keys            u:object_r:display_sysfs:s0
 
+# Charger
+/dev/block/platform/msm_sdcc\.1/by-name/persist    u:object_r:persist_block_device:s0
+/sbin/chargeonlymode                               u:object_r:chargeonlymode:s0
+
 # GPS
 /system/bin/gsiff_daemon                           u:object_r:location_exec:s0
 

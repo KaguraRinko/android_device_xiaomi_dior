@@ -402,10 +402,14 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
    disabled
    oneshot
 
-service charger /sbin/healthd -c
+service charger /sbin/chargeonlymode
     class charger
-    critical
-    seclabel u:r:healthd:s0
+    seclabel u:r:chargeonlymode:s0
+
+service charger_monitor /system/bin/charger_monitor
+    user system
+    group system
+    disabled
 
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
@@ -432,6 +436,8 @@ on charger
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     start mpdecision
+    start charger_monitor
+    class_start charger
 
 on property:sys.boot_completed=1
     # Enable Power modes and set the CPU Freq Sampling rates
