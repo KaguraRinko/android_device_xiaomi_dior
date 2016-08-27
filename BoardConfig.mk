@@ -86,8 +86,8 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Hardware tunables
 BOARD_HARDWARE_CLASS := \
-    hardware/mokee/mkhw \
-    $(LOCAL_PATH)/mkhw
+    hardware/cyanogen/cmhw \
+    $(LOCAL_PATH)/cmhw
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_dior

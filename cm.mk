@@ -21,10 +21,10 @@ $(call inherit-product, device/xiaomi/dior/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 
 # Inherit some common MK stuff (full)
-$(call inherit-product, vendor/mk/config/common_full_phone.mk)
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Product configuration
-PRODUCT_NAME := mk_dior
+PRODUCT_NAME := cm_dior
 PRODUCT_DEVICE := dior
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
