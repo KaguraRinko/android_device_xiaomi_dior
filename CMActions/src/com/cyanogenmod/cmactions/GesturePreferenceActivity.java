@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mokee.mkactions;
+package com.cyanogenmod.cmactions;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

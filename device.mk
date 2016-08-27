@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 
 # MKActions
 PRODUCT_PACKAGES += \
-    MKActions
+    CMActions
 
 # Permissions
 PRODUCT_COPY_FILES += \

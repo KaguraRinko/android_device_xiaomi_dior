@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mokee.mkactions;
+package com.cyanogenmod.cmactions;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -24,12 +24,12 @@ import android.util.Log;
 public class BootCompletedReceiver extends BroadcastReceiver {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "MKActions";
+    private static final String TAG = "CMActions";
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Starting service");
-        context.startService(new Intent(context, MKActionsService.class));
+        context.startService(new Intent(context, CMActionsService.class));
     }
 
 }
