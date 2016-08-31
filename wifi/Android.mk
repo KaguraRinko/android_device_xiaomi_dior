@@ -35,7 +35,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := WCNSS_cfg.dat
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := ../../../../$(TARGET_KERNEL_SOURCE)/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/firmware/wlan/prima
 include $(BUILD_PREBUILT)
 
@@ -43,7 +43,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := WCNSS_qcom_cfg.ini
 LOCAL_MODULE_TAGS  := optional
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := ../../../../$(TARGET_KERNEL_SOURCE)/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
 LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
 include $(BUILD_PREBUILT)
 
