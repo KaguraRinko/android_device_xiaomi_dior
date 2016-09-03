@@ -110,7 +110,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Memory
-MALLOC_IMPL := dlmalloc
+#MALLOC_IMPL := dlmalloc
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8226
