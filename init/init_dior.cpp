@@ -28,9 +28,10 @@
  */
 
 #include <stdlib.h>
+#include <unistd.h>
 
+#include <cutils/properties.h>
 #include "vendor_init.h"
-#include "property_service.h"
 #include "log.h"
 #include "util.h"
 
@@ -42,11 +43,11 @@ void vendor_load_properties()
     char modem[PROP_VALUE_MAX];
     int rc;
 
-    rc = property_get("ro.board.platform", platform);
+    rc = property_get("ro.board.platform", platform,NULL);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
         return;
 
-    property_get("ro.boot.modem", modem);
+    property_get("ro.boot.modem", modem,NULL);
 
     if (strstr(modem, "LTEW")) {
         property_set("ro.product.model", "HM NOTE 1LTE");
