@@ -159,5 +159,8 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 TARGET_USES_QCOM_WCNSS_QMI := true
 TARGET_PROVIDES_WCNSS_QMI := true
 
+# Avoid CMSDK issues for now
+I_WANT_A_QUAIL_STAR := true
+
 # inherit from the proprietary version
 -include vendor/xiaomi/dior/BoardConfigVendor.mk
