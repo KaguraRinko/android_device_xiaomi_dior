@@ -348,9 +348,6 @@
          proportionally to the smaller buckets. -1 keeps the default. -->
     <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">81920</integer>
 
-    <!-- Component name of the combo network location provider. -->
-    <string name="config_comboNetworkLocationProvider" translatable="false">com.qualcomm.location</string>
-
     <!-- Values for GPS configuration -->
     <string-array translatable="false" name="config_gpsParameters">
         <item>XTRA_SERVER_1=http://xtrapath1.izatcloud.net/xtra2.bin</item>
@@ -370,6 +367,4 @@
         <item>GPS_LOCK=2</item>
     </string-array>
 
-    <!-- Enable blur support -->
-    <bool name="config_ui_blur_enabled">true</bool>
 </resources>
