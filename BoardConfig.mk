@@ -81,10 +81,8 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# Hardware tunables
-BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw \
-    $(LOCAL_PATH)/cmhw
+# CMHW
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw/
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_dior
