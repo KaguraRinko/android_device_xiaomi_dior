@@ -96,9 +96,6 @@ etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 
-# Charger
-bin/charger_monitor
-
 # Chromatix
 vendor/lib/libchromatix_ov9760_q1v05a_common.so
 vendor/lib/libchromatix_ov9760_q1v05a_default_video.so
