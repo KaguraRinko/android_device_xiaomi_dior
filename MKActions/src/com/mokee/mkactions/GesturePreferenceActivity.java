@@ -14,18 +14,19 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmactions;
+package com.mokee.mkactions;
 
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 
-public class GesturePreferenceActivity extends PreferenceActivity {
+import com.android.settingslib.drawer.SettingsDrawerActivity;
+
+public class GesturePreferenceActivity extends SettingsDrawerActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction()
-                .replace(android.R.id.content, new GesturePreferenceFragment()).commit();
+                .replace(R.id.content_frame, new GesturePreferenceFragment()).commit();
     }
 
 }
