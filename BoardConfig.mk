@@ -128,6 +128,10 @@ include device/qcom/sepolicy/sepolicy.mk
 
 #BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
+# Odex
+WITH_DEXPREOPT += false
+DONT_DEXPREOPT_PREBUILTS += false
+
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
