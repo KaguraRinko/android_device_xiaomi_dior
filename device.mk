@@ -64,6 +64,10 @@ PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     init.qcom.fm.sh
 
+# CABL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.cabl=0
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
