@@ -84,7 +84,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    hardware/cyanogen/cmhw
+    hardware/cyanogen/cmhw \
     $(LOCAL_PATH)/cmhw
 
 # Init
