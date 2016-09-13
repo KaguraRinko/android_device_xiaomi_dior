@@ -1,5 +1,1 @@
-#============= mediaserver ==============
 allow mediaserver socket_device:sock_file write;
-
-# For text relocations in /system/vendor/lib/libFaceProc.so
-allow mediaserver system_file:file execmod;
