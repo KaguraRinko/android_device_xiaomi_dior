@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.mokee.hardware;
+package org.cyanogenmod.hardware;
 
-import org.mokee.hardware.util.FileUtils;
-import android.os.SystemProperties;
+import org.cyanogenmod.internal.util.FileUtils;
+import java.io.File;
 
 /*
  * Disable capacitive keys
@@ -41,7 +41,6 @@ public class KeyDisabler {
     }
 
     public static boolean setActive(boolean state) {
-	SystemProperties.set ( "softkey.change" ,  "1" );
         return FileUtils.writeLine(CONTROL_PATH, (state ? "0" : "1"));
     }
 
