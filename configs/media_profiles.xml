@@ -36,7 +36,7 @@
 <!ATTLIST Video height CDATA #REQUIRED>
 <!ATTLIST Video frameRate CDATA #REQUIRED>
 <!ELEMENT Audio EMPTY>
-<!ATTLIST Audio codec (amrnb|amrwb|aac) #REQUIRED>
+<!ATTLIST Audio codec (amrnb|amrwb|aac|lpcm) #REQUIRED>
 <!ATTLIST Audio bitRate CDATA #REQUIRED>
 <!ATTLIST Audio sampleRate CDATA #REQUIRED>
 <!ATTLIST Audio channels (1|2|6) #REQUIRED>
@@ -48,7 +48,7 @@
 <!ELEMENT EncoderOutputFileFormat EMPTY>
 <!ATTLIST EncoderOutputFileFormat name (mp4|3gp) #REQUIRED>
 <!ELEMENT VideoEncoderCap EMPTY>
-<!ATTLIST VideoEncoderCap name (h264|h263|m4v|wmv) #REQUIRED>
+<!ATTLIST VideoEncoderCap name (hevc|h263|m4v|wmv) #REQUIRED>
 <!ATTLIST VideoEncoderCap enabled (true|false) #REQUIRED>
 <!ATTLIST VideoEncoderCap minBitRate CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap maxBitRate CDATA #REQUIRED>
@@ -62,7 +62,7 @@
 <!ATTLIST VideoEncoderCap maxHFRFrameHeight CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap maxHFRMode CDATA #REQUIRED>
 <!ELEMENT AudioEncoderCap EMPTY>
-<!ATTLIST AudioEncoderCap name (amrnb|amrwb|aac|wma) #REQUIRED>
+<!ATTLIST AudioEncoderCap name (amrnb|amrwb|aac|wma|lpcm) #REQUIRED>
 <!ATTLIST AudioEncoderCap enabled (true|false) #REQUIRED>
 <!ATTLIST AudioEncoderCap minBitRate CDATA #REQUIRED>
 <!ATTLIST AudioEncoderCap maxBitRate CDATA #REQUIRED>
@@ -461,7 +461,7 @@
          In other words, the applications won't be able to use the codec
          or query the capabilities of the codec at all if it is disabled
     -->
-    <VideoEncoderCap name="h264" enabled="true"
+    <VideoEncoderCap name="hevc" enabled="true"
         minBitRate="64000" maxBitRate="20000000"
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1088"
