@@ -204,6 +204,10 @@ PRODUCT_PACKAGES += \
     init.dior.usb.rc \
     ueventd.dior.rc
 
+# RIL
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full
+
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf
