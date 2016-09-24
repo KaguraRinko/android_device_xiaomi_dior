@@ -17,6 +17,8 @@
 
 LOCAL_PATH := device/xiaomi/dior
 
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
