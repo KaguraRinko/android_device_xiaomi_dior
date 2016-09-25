@@ -1,0 +1,2 @@
+allow debuggerd gpu_device:chr_file { read getattr open };
+allow debuggerd app_data_file:file { read getattr open };

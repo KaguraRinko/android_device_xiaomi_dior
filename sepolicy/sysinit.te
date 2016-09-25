@@ -1,0 +1,6 @@
+#============= sysinit ==============
+allow sysinit self:capability { dac_read_search dac_override };
+allow sysinit wifi_data_file:dir search;
+allow sysinit wifi_data_file:file getattr;
+
+allow sysinit system_file:file execute_no_trans;

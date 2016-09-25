@@ -1,21 +1,8 @@
-# Battery health
-type batt_health_data_file, file_type, data_file_type;
-type sysfs_batt_health, fs_type, sysfs_type;
+#============= cmhw ==============
+type display_sysfs, sysfs_type, file_type;
+type vibeamp_sysfs, sysfs_type, file_type;
 
-# CMHW
-type vibeamp_sysfs, fs_type, sysfs_type;
-
-# Cutback socket (RILD)
-type cutback_data_file, file_type, data_file_type;
-
-# Persist
-type persist_omadm_file, file_type;
-type persist_telephony_file, file_type;
-
-# PDS
-type pds_file, file_type;
-type pds_public_file, file_type;
-type pds_batt_file, file_type;
-
-# Sensors
-type sysfs_devices_sensors, file_type, sysfs_type;
+#============= Persist ==============
+type persist_properties_file, file_type;
+type persist_sensors_file, file_type;
+type sysfs_rmnet, fs_type, sysfs_type;

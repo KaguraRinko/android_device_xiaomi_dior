@@ -1,13 +1,8 @@
-# Unsure what init is doing here
-allow init app_data_file:dir setattr;
-allow init cid_block_device:blk_file setattr;
-allow init clogo_block_device:blk_file setattr;
-allow init hob_block_device:blk_file setattr;
-allow init logs_block_device:blk_file setattr;
-allow init utags_block_device:blk_file setattr;
+#============= init ==============
+allow init firmware_file:dir mounton;
+allow init kernel:system syslog_read;
 
-# Allow init to mount PDS
-allow init loop_device:blk_file write;
-
-# Allow init to read battery sysfs
-allow init sysfs_battery_supply:lnk_file read;
+allow init device:chr_file { create unlink };
+allow init graphics_device:chr_file { write ioctl };
+allow init input_device:chr_file ioctl;
+allow init self:netlink_kobject_uevent_socket { read bind create setopt };

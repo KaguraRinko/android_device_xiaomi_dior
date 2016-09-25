@@ -1,7 +1,17 @@
-allow system_server sensors_data_file:dir create_dir_perms;
-allow system_server sensors_data_file:fifo_file rw_file_perms;
-allow system_server sysfs_devices_sensors:dir search;
-allow system_server sysfs_devices_sensors:file rw_file_perms;
-allow system_server sysfs_devices_sensors:lnk_file read;
-allow system_server vibeamp_sysfs:file { getattr open read write };
-allow system_server sysfs_usb_supply:lnk_file read;
+# PowerManagerService access to sensors socket
+unix_socket_connect(system_server, sensors, sensors)
+unix_socket_send(system_server, sensors, sensors)
+allow system_server sensors:unix_stream_socket sendto;
+allow system_server sensors_socket:sock_file r_file_perms;
+
+#============= system_server =============
+allow system_server mediaserver:unix_stream_socket write;
+allow system_server time_daemon:unix_stream_socket connectto;
+
+#============= cmhw ==============
+allow system_server display_sysfs:file rw_file_perms;
+allow system_server vibeamp_sysfs:file rw_file_perms;
+
+# Read /data/misc/sensors or /data/system/sensors.
+allow system_server sensors_data_file:dir r_dir_perms;
+allow system_server sensors_data_file:file r_file_perms;

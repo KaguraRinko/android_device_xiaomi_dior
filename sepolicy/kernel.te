@@ -1,3 +1,0 @@
-allow kernel sysfs_devices_sensors:dir { r_dir_perms relabelto };
-allow kernel sysfs_devices_sensors:file relabelto;
-allow kernel sysfs_devices_sensors:lnk_file relabelto;

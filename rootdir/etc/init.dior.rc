@@ -216,6 +216,10 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
+    # Adjust vibrator amplitude
+    chown system system /sys/class/timed_output/vibrator/amp
+    chmod 0664 /sys/class/timed_output/vibrator/amp
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
