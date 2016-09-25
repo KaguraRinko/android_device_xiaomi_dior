@@ -98,7 +98,6 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_dior
 TARGET_UNIFIED_DEVICE := true
 
 # Kernel
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
 TARGET_KERNEL_CONFIG := mokee_dior_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=dior zcache.enabled=1 user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
@@ -109,7 +108,6 @@ BOARD_DTBTOOL_ARGS := --force-v2
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
 # Camera
-USE_CAMERA_STUB := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Lights
