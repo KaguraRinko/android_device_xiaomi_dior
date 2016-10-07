@@ -37,13 +37,13 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-
+    # Support legacy paths
     symlink /sdcard /storage/sdcard0
 
     write /proc/sys/vm/page-cluster 0
 
     # Symbols required for blobs
-    export LD_SHIM_LIBS "/system/lib/libcrypto.so|libboringssl-compat.so"
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
 
 on fs
     mount_all fstab.dior
@@ -109,16 +109,6 @@ on boot
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
     chmod 0664 /sys/class/graphics/fb0/dynamic_fps
 
-    chown system camera /sys/class/leds/flashlight/brightness
-    chown system system /sys/class/leds/button-backlight/brightness
-    chmod 0666 /sys/class/leds/flashlight/brightness
-    chmod 0666 /sys/class/leds/button-backlight/brightness
-
-    # Key disabler
-    chown root system /sys/devices/gpio_keys.76/disabled_keys
-    chmod 0664 /sys/devices/gpio_keys.76/disabled_keys
-    restorecon /sys/devices/gpio_keys.76/disabled_keys
-
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
 
@@ -142,13 +132,13 @@ on boot
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
+    # Assign TCP buffer thresholds to be ceiling value of technology maximums
+    # Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  2097152
+    write /proc/sys/net/core/wmem_max  2097152
+
     # Prevents permission denied error for telephony
     chmod 0644 /proc/cmdline
-		
-    # Assign TCP buffer thresholds to be ceiling value of technology maximums		
-    # Increased technology maximums should be reflected here.		
-    write /proc/sys/net/core/rmem_max  2097152		
-    write /proc/sys/net/core/wmem_max  2097152		
 
     # To allow interfaces to get v6 address when tethering is enabled
     write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
@@ -170,11 +160,10 @@ on boot
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
 on post-fs-data
-
-    # Create directory for TZ Apps		
+    # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # Create directories for Location services
+    #Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
@@ -221,6 +210,17 @@ on post-fs-data
     chown system system /sys/class/timed_output/vibrator/amp
     chmod 0664 /sys/class/timed_output/vibrator/amp
 
+    # flashlight and button-backlight
+    chown system camera /sys/class/leds/flashlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+    chmod 0666 /sys/class/leds/flashlight/brightness
+    chmod 0666 /sys/class/leds/button-backlight/brightness
+
+    # Key disabler
+    chown root system /sys/devices/gpio_keys.76/disabled_keys
+    chmod 0664 /sys/devices/gpio_keys.76/disabled_keys
+    restorecon /sys/devices/gpio_keys.76/disabled_keys
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -241,19 +241,13 @@ service config_bt_addr /system/bin/btnvtool -O
     group bluetooth radio
     oneshot
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
-    start config_bluetooth
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin
+    group qcom_oncrpc bluetooth net_bt_admin system
     disabled
     oneshot
 
@@ -275,7 +269,7 @@ service netmgrd /system/bin/netmgrd
 service sensors /system/bin/sensors.qcom
     class late_start
     user root
-    group root
+    group root radio system
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -315,11 +309,9 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc qcom_diag log
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw qcom_diag log
 
-on property:persist.radio.multisim.config=none
-    start ril-daemon2
 
 # Set different perfer network type for different phone type
 on property:ro.boot.modem=LTETD
@@ -336,6 +328,9 @@ on property:ro.boot.modem=LTETD
 # Enable manual network selection function for CU
 on property:ro.boot.modem=LTEW
     setprop persist.radio.rat_on combine
+
+on property:persist.radio.multisim.config=none
+    start ril-daemon2
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -373,28 +368,16 @@ service adsprpcd /system/bin/adsprpcd
     group media
 
 service wcnss-service /system/bin/wcnss_service
-    class main
-    user system
-    group system wifi radio
+    class late_start
+    user root
+    group system wifi
     oneshot
 
-service location_mq /system/bin/location-mq
+#start GNSS/Sensor interface daemon
+service gsiff_daemon /system/bin/gsiff_daemon
     class late_start
-    user gps
-    group gps
-    disabled
-
-service xtwifi_client /system/bin/xtwifi-client
-    class late_start
-    user gps
-    group net_admin wifi inet gps
-    disabled
-
-service xtwifi_inet /system/bin/xtwifi-inet-agent
-    class late_start
-    user gps
-    group inet gps
-    disabled
+    user system
+    group gps net_raw
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
    class late_start
@@ -403,9 +386,9 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
    disabled
    oneshot
 
-service charger /charger
+service charger /sbin/healthd -c
     class charger
-    group log
+    critical
     seclabel u:r:healthd:s0
 
 on charger
@@ -429,7 +412,7 @@ on charger
     write /sys/devices/system/cpu/cpu3/online 0
 
 on property:sys.boot_completed=1
-    # Enable Power modes and set the IO scheduler
+    # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
@@ -451,5 +434,3 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk1/bdi/read_ahead_kb 1024
     start mpdecision
 
-    rm /data/system/default_values
-    start mpdecision

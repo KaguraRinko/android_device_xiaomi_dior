@@ -56,10 +56,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Bluetooth
-PRODUCT_PROPERTY_OVERRIDES += \
-    bluetooth.hfp.client=1 \
-    qcom.bt.dev_power_class=1
-
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     init.qcom.fm.sh
