@@ -1,8 +1,0 @@
-#============= init ==============
-allow init firmware_file:dir mounton;
-allow init kernel:system syslog_read;
-
-allow init device:chr_file { create unlink };
-allow init graphics_device:chr_file { write ioctl };
-allow init input_device:chr_file ioctl;
-allow init self:netlink_kobject_uevent_socket { read bind create setopt };

@@ -1,32 +1,3 @@
-# Change own perms to (nobody,nobody)
-allow sensors self:capability { setuid setgid };
-
-# Chown /data/misc/sensors/debug/ to nobody
-allow sensors self:capability chown;
-dontaudit sensors self:capability fsetid;
-
-# Access /data/misc/sensors/debug and /data/system/sensors/settings
-allow sensors self:capability { dac_read_search dac_override };
-
-# Create directories and files under /data/misc/sensors
-# and /data/system/sensors. Allow generic r/w file access.
-allow sensors sensors_data_file:dir create_dir_perms;
-allow sensors sensors_data_file:file create_file_perms;
-
-# Access to /persist/sensors
-allow sensors persist_file:dir r_dir_perms;
-allow sensors persist_sensors_file:dir r_dir_perms;
-allow sensors persist_sensors_file:file rw_file_perms;
-
-# Wake lock access
-wakelock_use(sensors)
-
-allow sensors cgroup:dir { create add_name };
-
 #============= sensors ==============
-allow sensors persist_file:file { read write getattr open setattr };
-allow sensors system_data_file:file open;
-allow sensors system_prop:property_service set;
 set_prop(sensors, sensors_prop)
-
-allow sensors persist_misc_file:dir getattr;
+allow sensors persist_misc_file:dir { getattr search };
