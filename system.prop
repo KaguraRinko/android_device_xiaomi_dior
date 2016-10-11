@@ -48,3 +48,6 @@ ro.telephony.call_ring.multiple=false
 
 # run adbd as root
 ro.secure=0
+
+media.stagefright.codecremote=false
+media.stagefright.legacyencoder=true
