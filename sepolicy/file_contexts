@@ -4,6 +4,9 @@
 # CMHW
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
 
+# GPS
+/system/bin/gsiff_daemon                      u:object_r:location_exec:s0
+
 # Key Disabler
 /sys/devices/gpio_keys.76/disabled_keys       u:object_r:display_sysfs:s0
 
