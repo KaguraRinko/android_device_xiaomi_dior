@@ -155,16 +155,9 @@ static char *camera_fixup_setparams(int id, const char *settings)
         params.set(android::CameraParameters::KEY_QC_ZSL, "on");
     }
 
-    /* Enable Morpho EasyHDR and disable flash in HDR mode */
+    /* Disable flash in HDR mode */
     if (hdrMode && !videoMode) {
-        params.set(android::CameraParameters::KEY_QC_MORPHO_HDR, "true");
-        params.set(android::CameraParameters::KEY_QC_AE_BRACKET_HDR, "AE-Bracket");
-        params.set(android::CameraParameters::KEY_QC_CAPTURE_BURST_EXPOSURE, "-6,8,0");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
-    } else {
-        params.set(android::CameraParameters::KEY_QC_MORPHO_HDR, "false");
-        params.set(android::CameraParameters::KEY_QC_AE_BRACKET_HDR, "Off");
-        params.set(android::CameraParameters::KEY_QC_CAPTURE_BURST_EXPOSURE, "0,0,0");
     }
 
 #if !LOG_NDEBUG
