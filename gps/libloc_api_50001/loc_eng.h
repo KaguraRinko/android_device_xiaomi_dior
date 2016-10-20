@@ -171,6 +171,7 @@ typedef struct
     double         RATE_RANDOM_WALK_SPECTRAL_DENSITY;
     uint8_t        VELOCITY_RANDOM_WALK_SPECTRAL_DENSITY_VALID;
     double         VELOCITY_RANDOM_WALK_SPECTRAL_DENSITY;
+    unsigned long  SENSOR_PROVIDER;
 } loc_sap_cfg_s_type;
 
 extern loc_gps_cfg_s_type gps_conf;
@@ -198,7 +199,7 @@ const void* loc_eng_get_extension(loc_eng_data_s_type &loc_eng_data,
 void loc_eng_agps_init(loc_eng_data_s_type &loc_eng_data,
                        AGpsExtCallbacks* callbacks);
 int  loc_eng_agps_open(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType,
-                      const char* apn, ApnIpType bearerType);
+                      const char* apn, AGpsBearerType bearerType);
 int  loc_eng_agps_closed(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType);
 int  loc_eng_agps_open_failed(loc_eng_data_s_type &loc_eng_data, AGpsExtType agpsType);
 
