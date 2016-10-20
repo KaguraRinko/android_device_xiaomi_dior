@@ -19,6 +19,9 @@ LOCAL_PATH := device/xiaomi/dior
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# ANT+
+BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
+
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -40,6 +43,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
+QCOM_BT_USE_SMD_TTY := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8226
@@ -66,6 +70,10 @@ BOARD_FLASH_BLOCK_SIZE             := 131072
 # FM
 TARGET_FM_LEGACY_PATCHLOADER := true
 
+# GPS
+USE_DEVICE_SPECIFIC_GPS := true
+TARGET_PROVIDES_GPS_LOC_API := true
+
 # Graphics
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
@@ -91,6 +99,9 @@ BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
     hardware/cyanogen/cmhw \
     $(LOCAL_PATH)/cmhw
+    
+# No old RPC for prop
+TARGET_NO_RPC := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_dior
@@ -156,7 +167,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/f
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
-BOARD_HAS_QCOM_WLAN_SDK := true
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
