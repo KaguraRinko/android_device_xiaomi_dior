@@ -49,23 +49,53 @@
         <item>"ethernet,9,9,4,-1,true"</item>
     </string-array>
 
-    <string-array name="config_mobile_tcp_buffers">		
-        <item>"lte:2097152,4194304,8388608,262144,524288,1048576"</item>		
-        <item>"lte_ca:2097152,4194304,8388608,262144,524288,1048576"</item>		
-        <item>"umts:4094,87380,1220608,4096,16384,1220608"</item>		
-        <item>"hspa:4094,87380,1220608,4096,16384,1220608"</item>		
-        <item>"hsupa:4094,87380,1220608,4096,16384,1220608"</item>		
-        <item>"hsdpa:4094,87380,2441216,4096,16384,2441216"</item>		
-        <item>"hspap:4094,87380,1220608,4096,16384,1220608"</item>		
-        <item>"edge:4093,26280,35040,4096,16384,35040"</item>		
-        <item>"gprs:4092,8760,11680,4096,8760,11680"</item>		
-        <item>"evdo:4094,87380,1048576,4096,16384,262144"</item>		
-        <item>"ehrpd:4094,87380,1048576,4096,16384,262144"</item>		
+    <string-array name="config_mobile_tcp_buffers">
+        <item>"lte:2097152,4194304,8388608,262144,524288,1048576"</item>
+        <item>"lte_ca:2097152,4194304,8388608,262144,524288,1048576"</item>
+        <item>"umts:4094,87380,1220608,4096,16384,1220608"</item>
+        <item>"hspa:4094,87380,1220608,4096,16384,1220608"</item>
+        <item>"hsupa:4094,87380,1220608,4096,16384,1220608"</item>
+        <item>"hsdpa:4094,87380,2441216,4096,16384,2441216"</item>
+        <item>"hspap:4094,87380,1220608,4096,16384,1220608"</item>
+        <item>"edge:4093,26280,35040,4096,16384,35040"</item>
+        <item>"gprs:4092,8760,11680,4096,8760,11680"</item>
+        <item>"evdo:4094,87380,1048576,4096,16384,262144"</item>
+        <item>"ehrpd:4094,87380,1048576,4096,16384,262144"</item>
     </string-array>
 
-    <!-- Configure wifi tcp buffersizes in the form:		
-         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->		
+    <!-- Configure wifi tcp buffersizes in the form:
+         rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
     <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,4194304,262144,524288,1048576</string>
+
+    <!-- Values for GPS configuration -->
+    <string-array translatable="false" name="config_gpsParameters">
+        <item>SUPL_HOST=supl.google.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>XTRA_SERVER_1=http://xtrapath1.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_2=http://xtrapath2.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_3=http://xtrapath3.izatcloud.net/xtra2.bin</item>
+        <item>NTP_SERVER=north-america.pool.ntp.org</item>
+        <item>SUPL_MODE=1</item>
+        <item>SUPL_VER=0x20000</item>
+        <item>LPP_PROFILE=0</item>
+        <item>NMEA_PROVIDER=0</item>
+        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
+        <item>ERR_ESTIMATE=0</item>
+        <item>INTERMEDIATE_POS=0</item>
+        <item>SUPL_ES=0</item>
+    </string-array>
+
+    <!-- Indicate whether closing the lid causes the device to go to sleep and opening
+         it causes the device to wake up.
+         The default is false. -->
+    <bool name="config_lidControlsSleep">true</bool>
+
+    <!-- Indicate whether to allow the device to suspend when the screen is off
+         due to the proximity sensor.  This resource should only be set to true
+         if the sensor HAL correctly handles the proximity sensor as a wake-up source.
+         Otherwise, the device may fail to wake out of suspend reliably.
+         The default is false. -->
+    <bool name="config_suspendWhenScreenOffDueToProximity">true</bool>
 
     <!-- This string array should be overridden by the device to present a list of radio
          attributes.  This is used by the connectivity manager to decide which networks can coexist
@@ -102,17 +132,6 @@
         <item>"bt-pan"</item>
     </string-array>
 
-    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
-    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
-             <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
-    <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
-        <item>1</item>
-        <item>4</item>
-        <item>5</item>
-        <item>7</item>
-    </integer-array>
-
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
@@ -127,7 +146,7 @@
          it causes the device to wake up.
          The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
-
+    
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
@@ -309,30 +328,21 @@
          Doze dreams will run whenever the power manager is in a dozing state. -->
     <string name="config_dozeComponent">com.android.systemui/com.android.systemui.doze.DozeService</string>
 
-    <!-- Screen brightness used to dim the screen while dozing in a very low power state.
-         May be less than the minimum allowed brightness setting
-         that can be set by the user. -->
-    <integer name="config_screenBrightnessDoze">17</integer>
-
     <!-- If true, the doze component is not started until after the screen has been
          turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOff">true</bool>
 
     <!-- Power Management: Specifies whether to decouple the interactive state of the
-          device from the display on/off state.
-
+         device from the display on/off state.
          When false, setInteractive(..., true) will be called before the display is turned on
          and setInteractive(..., false) will be called after the display is turned off.
          This mode provides best compatibility for devices that expect the interactive
          state to be tied to the display state.
-
          When true, setInteractive(...) will be called independently of whether the display
          is being turned on or off.  This mode enables the power manager to reduce
          clocks and disable the touch controller while the display is on.
-
          This resource should be set to "true" when a doze component has been specified
          to maximize power savings but not all devices support it.
-
          Refer to power.h for details.
     -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
@@ -363,32 +373,23 @@
     <!-- Our modem doesn't support this query yet -->
     <string name="config_radio_access_family">GPRS|EDGE|UMTS|HSDPA|HSUPA|HSPA|LTE|HSPAP|GSM|TD_SCDMA|WCDMA|LTE_CA</string>
 
-    <!-- Device configuration setting the minfree tunable in the lowmemorykiller in the
-         kernel. A high value will cause the lowmemorykiller to fire earlier, keeping more
-         memory in the file cache and preventing I/O thrashing, but allowing fewer processes
-         to stay in memory. A low value will keep more processes in memory but may cause
-         thrashing if set too low. Overrides the default value chosen by ActivityManager based
-         on screen size and total memory for the largest lowmemorykiller bucket, and scaled
-         proportionally to the smaller buckets. -1 keeps the default. -->
-    <integer name="config_lowMemoryKillerMinFreeKbytesAbsolute">81920</integer>
+    <!-- Whether WiFi display is supported by this device.
+         There are many prerequisites for this feature to work correctly.
+         Here are a few of them:
+         * The WiFi radio must support WiFi P2P.
+         * The WiFi radio must support concurrent connections to the WiFi display and
+           to an access point.
+         * The Audio Flinger audio_policy.conf file must specify a rule for the "r_submix"
+           remote submix module.  This module is used to record and stream system
+           audio output to the WiFi display encoder in the media server.
+         * The remote submix module "audio.r_submix.default" must be installed on the device.
+         * The device must be provisioned with HDCP keys (for protected content).
+    -->
+    <bool name="config_enableWifiDisplay">true</bool>
 
-    <!-- Values for GPS configuration -->
-    <string-array translatable="false" name="config_gpsParameters">
-        <item>XTRA_SERVER_1=http://xtrapath1.izatcloud.net/xtra2.bin</item>
-        <item>XTRA_SERVER_2=http://xtrapath2.izatcloud.net/xtra2.bin</item>
-        <item>XTRA_SERVER_3=http://xtrapath3.izatcloud.net/xtra2.bin</item>
-        <item>NTP_SERVER=north-america.pool.ntp.org</item>
-        <item>SUPL_MODE=0</item>
-        <item>SUPL_HOST=NONE</item>
-        <item>SUPL_PORT=7275</item>
-        <item>SUPL_VER=0x20000</item>
-        <item>LPP_PROFILE=3</item>
-        <item>NMEA_PROVIDER=0</item>
-        <item>A_GLONASS_POS_PROTOCOL_SELECT=0</item>
-        <item>ERR_ESTIMATE=0</item>
-        <item>INTERMEDIATE_POS=0</item>
-        <item>SUPL_ES=0</item>
-        <item>GPS_LOCK=2</item>
-    </string-array>
+    <!-- Support in Surfaceflinger for blur layers.
+         NOTE: This requires additional hardware-specific code. >
+    <bool name="config_ui_blur_enabled">true</bool-->
 
 </resources>
+
