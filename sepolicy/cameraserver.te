@@ -1,4 +1,0 @@
-allow cameraserver camera_socket:sock_file w_file_perms;
-
-# For text relocations in /system/vendor/lib/libFaceProc.so
-allow cameraserver system_file:file execmod;
