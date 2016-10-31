@@ -1,4 +1,4 @@
-type bdaddr, domain;
+type bdaddr, domain, domain_deprecated;
 type bdaddr_exec, exec_type, file_type;
 
 init_daemon_domain(bdaddr)
@@ -6,9 +6,11 @@ init_daemon_domain(bdaddr)
 # Allow bdaddr to communicate with qmuxd via qmux_radio socket
 qmux_socket(bdaddr)
 
-# Allow access /data/misc/bluetooth
+# Allow access to /data/misc/bluetooth
 allow bdaddr bluetooth_data_file:dir w_dir_perms;
 allow bdaddr bluetooth_data_file:file create_file_perms;
 
-allow bdaddr self:capability dac_override;
+allow bdaddr self:capability { fsetid dac_override };
 allow bdaddr self:socket create_socket_perms;
+
+allow bdaddr smem_log_device:chr_file rw_file_perms;
