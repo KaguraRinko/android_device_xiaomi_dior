@@ -59,8 +59,10 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     bdaddr_xiaomi \
-    init.qcom.bt.sh \
     init.qcom.fm.sh
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/init.dior.bt.sh:system/bin/init.dior.bt.sh
 
 # CABL
 PRODUCT_PROPERTY_OVERRIDES += \
