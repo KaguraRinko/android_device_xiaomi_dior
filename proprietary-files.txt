@@ -41,9 +41,7 @@ vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 
 # Bluetooth
-bin/btnvtool
 bin/hci_qcomm_init
-vendor/lib/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon

@@ -1,3 +1,6 @@
+# Bluetooth
+/system/bin/bdaddr_xiaomi                     u:object_r:bdaddr_exec:s0
+
 # Camera
 /data/cam_socket.*                            u:object_r:camera_socket:s0
 

@@ -21,7 +21,12 @@ failed ()
 
 POWER_CLASS=`getprop qcom.bt.dev_power_class`
 
+#load bd addr
+BDADDR=`cat /data/misc/bluetooth/bdaddr`
+
 setprop bluetooth.status off
+
+logi "BDADDR: $BDADDR"
 
 case $POWER_CLASS in
   1) PWR_CLASS="-p 0" ;
@@ -35,7 +40,12 @@ case $POWER_CLASS in
      logi "Power Class: To override, Before turning BT ON; setprop qcom.bt.dev_power_class <1 or 2 or 3>";;
 esac
 
+if [$BDADDR == ""]
+then
 /system/bin/hci_qcomm_init -e $PWR_CLASS
+else
+/system/bin/hci_qcomm_init -b $BDADDR -e $PWR_CLASS
+fi
 
 case $? in
   0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
