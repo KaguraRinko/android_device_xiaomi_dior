@@ -1,4 +1,4 @@
--keep class com.cyanogenmod.CMActions.* {
+-keep class com.mokee.MKActions.* {
   *;
 }
 

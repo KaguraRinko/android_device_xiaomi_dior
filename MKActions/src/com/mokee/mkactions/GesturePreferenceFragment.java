@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmactions;
+package com.mokee.mkactions;
 
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;

@@ -180,7 +180,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # MKActions
 PRODUCT_PACKAGES += \
-    CMActions
+    MKActions
 
 # Permissions
 PRODUCT_COPY_FILES += \

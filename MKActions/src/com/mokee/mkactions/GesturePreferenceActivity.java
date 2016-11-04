@@ -14,22 +14,20 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmactions;
+package com.mokee.mkactions;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
+import android.os.Bundle;
 
-public class BootCompletedReceiver extends BroadcastReceiver {
+import com.android.settingslib.drawer.SettingsDrawerActivity;
 
-    private static final boolean DEBUG = false;
-    private static final String TAG = "CMActions";
+public class GesturePreferenceActivity extends SettingsDrawerActivity {
 
     @Override
-    public void onReceive(final Context context, Intent intent) {
-        if (DEBUG) Log.d(TAG, "Starting service");
-        context.startService(new Intent(context, CMActionsService.class));
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.content_frame, new GesturePreferenceFragment()).commit();
     }
 
 }
+

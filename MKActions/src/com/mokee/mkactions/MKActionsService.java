@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.cyanogenmod.cmactions;
+package com.mokee.mkactions;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -36,8 +36,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CMActionsService extends Service {
-    private static final String TAG = "CMActionsService";
+public class MKActionsService extends Service {
+    private static final String TAG = "MKActionsService";
     private static final boolean DEBUG = false;
 
     private static final String GESTURE_HAND_WAVE_KEY = "gesture_hand_wave";
@@ -109,11 +109,11 @@ public class CMActionsService extends Service {
 
     @Override
     public void onCreate() {
-        if (DEBUG) Log.d(TAG, "CMActionsService Started");
+        if (DEBUG) Log.d(TAG, "MKActionsService Started");
         mContext = this;
         mPowerManager = (PowerManager)getSystemService(Context.POWER_SERVICE);
         mSensor = new DiorProximitySensor(mContext);
-        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "MKActionsWakeLock");
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
         loadPreferences(sharedPrefs);
         sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);

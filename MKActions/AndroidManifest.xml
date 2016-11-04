@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.cyanogenmod.cmactions"
+    package="com.mokee.mkactions"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
@@ -8,24 +8,24 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
-        android:label="CMActions"
+        android:label="MKActions"
         android:persistent="true">
 
-        <receiver android:name="com.cyanogenmod.cmactions.BootCompletedReceiver">
+        <receiver android:name="com.mokee.mkactions.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.cyanogenmod.cmactions.CMActionsService"
-                 android:permission="CMActionsService">
+        <service android:name="com.mokee.mkactions.MKActionsService"
+                 android:permission="MKActionsService">
         </service>
 
         <activity
             android:name=".GesturePreferenceActivity"
             android:label="@string/screen_gestures_panel_title"
-            android:theme="@style/CMActions">
+            android:theme="@style/MKActions">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
