@@ -5,7 +5,7 @@
 # Camera
 /data/cam_socket.*                            u:object_r:camera_socket:s0
 
-# CMHW
+# MKHW
 /sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
 
 # GPS
