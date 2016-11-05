@@ -92,8 +92,8 @@ PRODUCT_PACKAGES += \
     libjni_livedisplay
 
 # DRM
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
+PRODUCT_PACKAGES += \
+    libshims_wvm
 
 # Ebtables
 PRODUCT_PACKAGES += \
