@@ -44,6 +44,9 @@ mm.enable.qcom_parser=37491
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 
+# Storage
+ro.sys.sdcardfs=true
+
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
