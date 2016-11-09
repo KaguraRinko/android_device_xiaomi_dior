@@ -113,6 +113,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshims_wvm
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Ebtables
 PRODUCT_PACKAGES += \
     ebtables \
