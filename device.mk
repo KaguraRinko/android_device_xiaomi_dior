@@ -174,6 +174,10 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true
+
 # MKActions
 #PRODUCT_PACKAGES += \
 #    MKActions
@@ -239,8 +243,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory \
-    libshims_thermal
+    com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \

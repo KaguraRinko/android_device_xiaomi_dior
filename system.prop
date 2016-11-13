@@ -31,22 +31,6 @@ persist.hwc.mdpcomp.enable=true
 # Gps Smart Battery Savings (depends on sensor hub)
 persist.mot.gps.smart_battery=1
 
-# Media
-media.stagefright.enable-player=true
-media.stagefright.enable-http=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
-media.stagefright.enable-fma2dp=true
-media.stagefright.enable-scan=true
-mmp.enable.3g2=true
-mm.enable.smoothstreaming=true
-mm.enable.qcom_parser=37491
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
-
-# Storage
-ro.sys.sdcardfs=true
-
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
