@@ -151,6 +151,9 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 WITH_DEXPREOPT += false
 DONT_DEXPREOPT_PREBUILTS += false
 
+# Snapdragon LLVM
+TARGET_USE_SDCLANG := true
+
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
