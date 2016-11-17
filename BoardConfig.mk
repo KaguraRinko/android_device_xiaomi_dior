@@ -126,6 +126,9 @@ BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 -
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
+# Media
+TARGET_USES_MEDIA_EXTENSIONS := true
+
 # Memory
 MALLOC_SVELTE := true
 
