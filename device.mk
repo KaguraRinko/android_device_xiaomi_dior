@@ -170,8 +170,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.less-secure=true
 
 # MKActions
-#PRODUCT_PACKAGES += \
-#    MKActions
+PRODUCT_PACKAGES += \
+    MKActions
 
 # Permissions
 PRODUCT_COPY_FILES += \
