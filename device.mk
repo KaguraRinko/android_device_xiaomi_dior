@@ -87,10 +87,6 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
-# DRM
-PRODUCT_PACKAGES += \
-    libshims_wvm
-
 # Ebtables
 PRODUCT_PACKAGES += \
     ebtables \
