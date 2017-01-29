@@ -656,6 +656,14 @@
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
+    <path name="adc3">
+        <ctl name="AIF1_CAP Mixer SLIM TX1" value="1"/>
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX1 MUX" value="DEC2" />
+        <ctl name="DEC2 MUX" value="ADC3" />
+        <ctl name="IIR1 INP1 MUX" value="DEC2" />
+    </path>
+
     <path name="speaker">
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="One" />
@@ -673,8 +681,8 @@
     </path>
 
     <path name="speaker-mic">
-        <path name="adc1" />
-        <ctl name="ADC1 Volume" value="13" />
+        <path name="adc3" />
+        <ctl name="ADC3 Volume" value="13" />
     </path>
 
     <path name="handset">
@@ -727,8 +735,8 @@
     </path>
 
     <path name="voice-speaker-mic">
-        <path name="adc1" />
-        <ctl name="ADC1 Volume" value="11" />
+        <path name="adc3" />
+        <ctl name="ADC3 Volume" value="11" />
     </path>
 
     <path name="voice-headphones">
@@ -783,19 +791,6 @@
 
     <path name="voice-rec-mic">
         <path name="handset-mic" />
-    </path>
-
-    <path name="camcorder-mic">
-        <ctl name="AIF1_CAP Mixer SLIM TX1" value="1" />
-        <ctl name="AIF1_CAP Mixer SLIM TX2" value="1" />
-        <ctl name="SLIM TX1 MUX" value="DEC1" />
-        <ctl name="DEC1 MUX" value="ADC1" />
-        <ctl name="SLIM TX2 MUX" value="DEC2" />
-        <ctl name="DEC2 MUX" value="ADC3" />
-        <ctl name="SLIM_0_TX Channels" value="Two" />
-        <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="ADC1 Volume" value="17" />
-        <ctl name="ADC3 Volume" value="17" />
     </path>
 
     <path name="hdmi-tx">
@@ -866,6 +861,12 @@
 
     <path name="speaker-stereo-dmic-ef">
         <path name="speaker-dmic-endfire" />
+    </path>
+
+    <path name="camcorder-mic">
+        <path name="speaker-dmic-endfire" />
+        <ctl name="ADC1 Volume" value="17" />
+        <ctl name="ADC3 Volume" value="17" />
     </path>
 
     <!-- TTY devices -->
