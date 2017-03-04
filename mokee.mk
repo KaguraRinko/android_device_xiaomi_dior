@@ -19,7 +19,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from dior device
 $(call inherit-product, device/xiaomi/dior/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
-$(call inherit-product-if-exists, vendor/qcom/binaries/msm8974/graphics/graphics-vendor.mk)
 
 # Inherit some common MK stuff (full)
 $(call inherit-product, vendor/mk/config/common_full_phone.mk)
