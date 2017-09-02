@@ -274,6 +274,7 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_wlan_nv_h3w.bin
 
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     hostapd \
     wpa_supplicant \
     wpa_supplicant.conf
