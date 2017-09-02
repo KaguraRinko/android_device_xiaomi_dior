@@ -1,3 +1,0 @@
-#============= sensors ==============
-set_prop(sensors, sensors_prop)
-allow sensors persist_misc_file:dir { getattr search };
