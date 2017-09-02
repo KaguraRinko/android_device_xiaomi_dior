@@ -25,6 +25,7 @@ ro.qualcomm.bt.hci_transport=smd
 
 # Display
 ro.opengles.version=196608
+debug.hwui.use_buffer_age=false
 ro.sf.lcd_density=320
 persist.hwc.mdpcomp.enable=true
 
