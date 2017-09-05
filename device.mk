@@ -277,6 +277,8 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf \
+
+PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
 
 # Storage
