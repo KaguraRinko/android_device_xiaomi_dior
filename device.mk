@@ -257,6 +257,10 @@ PRODUCT_PACKAGES += \
     init.dior.usb.rc \
     ueventd.dior.rc
 
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # RIL
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full
