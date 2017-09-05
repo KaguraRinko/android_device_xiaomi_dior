@@ -262,12 +262,12 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps
+    group radio audio bluetooth wakelock gps diag
 
 service netmgrd /system/bin/netmgrd
     class main
     user root
-    group radio system
+    group radio system wakelock
 
 service sensors /system/bin/sensors.qcom
     class late_start
