@@ -69,7 +69,8 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     bdaddr_xiaomi \
-    init.qcom.fm.sh
+    init.qcom.fm.sh \
+    android.hardware.bluetooth@1.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.dior.bt.sh:system/bin/init.dior.bt.sh
