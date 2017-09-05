@@ -133,6 +133,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1
 
+# Gralloc
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.mapper@2.0-impl
+
 # Graphics
 PRODUCT_PACKAGES += \
     libGLES_android \
