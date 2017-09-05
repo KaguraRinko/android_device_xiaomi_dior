@@ -26,6 +26,12 @@ TARGET_SCREEN_WIDTH := 720
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+# AOSP Packages
+PRODUCT_PACKAGES += \
+    Launcher3 \
+    messaging \
+    Terminal
+
 # ART
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog \
