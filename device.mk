@@ -147,6 +147,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
 
+# HW Composer
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.1-impl
+
 # IPC router
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
