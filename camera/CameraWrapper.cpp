@@ -148,7 +148,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
         hdrMode = (!strcmp(params.get(android::CameraParameters::KEY_SCENE_MODE), "hdr"));
     }
 
-    /* Disable ZSL and HDR snapshots in video mode */
+    /* Disable ZSL and HDR snapshots in video mode *
     if (videoMode) {
         params.set(android::CameraParameters::KEY_QC_ZSL, "off");
         if (hdrMode) {
