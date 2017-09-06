@@ -254,7 +254,7 @@
         <item>0</item>
     </integer-array>
 
-    <integer name="config_buttonBrightnessSettingDefault">85</integer>
+    <!--integer name="config_buttonBrightnessSettingDefault">85</integer-->
 
     <!-- Comment out this line for now since it seems button brightness is not adjustible
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>-->
@@ -281,7 +281,7 @@
          This needs to match the constants in
          services/core/java/com/android/server/policy/policy/impl/PhoneWindowManager.java
     -->
-    <integer name="config_longPressOnAppSwitchBehavior">1</integer>
+    <!--integer name="config_longPressOnAppSwitchBehavior">1</integer-->
 
     <!-- Hardware keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
