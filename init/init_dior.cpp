@@ -34,7 +34,11 @@
 #include <android-base/properties.h>
 #include "vendor_init.h"
 #include "property_service.h"
-using android::base::GetProperty;
+#include "log.h"
+#include "util.h"
+
+namespace android {
+namespace init {
 
 void property_override(char const prop[], char const value[])
 {
@@ -49,11 +53,11 @@ void property_override(char const prop[], char const value[])
 
 void vendor_load_properties()
 {
-    std::string platform = GetProperty("ro.board.platform","");
+    std::string platform = android::base::GetProperty("ro.board.platform","");
     if (platform != ANDROID_TARGET)
         return;
 
-    std::string modem = GetProperty("ro.boot.modem","");
+    std::string modem = android::base::GetProperty("ro.boot.modem","");
 
     if (modem == "LTEW") {
         property_override("ro.product.model", "HM NOTE 1LTE");
@@ -67,4 +71,7 @@ void vendor_load_properties()
     property_override("ro.build.product", "dior");
     property_override("ro.build.description", "dior-user 4.4.4 KTU84P V8.0.1.0.KHIMIDG release-keys");
     property_override("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU84P/V8.0.1.0.KHIMIDG:user/release-keys");
+}
+
+}
 }
