@@ -35,6 +35,7 @@ on early-init
 
 on init
     export LD_SHIM_LIBS /system/vendor/lib/libwvm.so|libshims_wvm.so
+    export LD_PRELOAD "/system/lib/libboringssl-compat.so"
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -264,12 +265,10 @@ on property:bluetooth.hciattach=false
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth wakelock gps diag
+    group radio audio bluetooth gps diag
 
 service netmgrd /system/bin/netmgrd
     class main
-    user root
-    group radio system wakelock
 
 service sensors /system/bin/sensors.qcom
     class late_start
