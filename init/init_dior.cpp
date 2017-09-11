@@ -32,10 +32,8 @@
 #include <sys/_system_properties.h>
 
 #include <android-base/properties.h>
-#include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include "vendor_init.h"
 
 namespace android {
 namespace init {
@@ -50,6 +48,8 @@ void property_override(char const prop[], char const value[])
     else
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
+
+
 
 void vendor_load_properties()
 {
@@ -69,8 +69,8 @@ void vendor_load_properties()
 
     property_override("ro.product.device", "dior");
     property_override("ro.build.product", "dior");
-    property_override("ro.build.description", "dior-user 4.4.4 KTU84P V8.0.1.0.KHIMIDG release-keys");
-    property_override("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU84P/V8.0.1.0.KHIMIDG:user/release-keys");
+    property_override("ro.build.description", "dior-user 4.4.4 KTU84P V8.2.1.0.KHIMIDL release-keys");
+    property_override("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU84P/V8.2.1.0.KHIMIDL:user/release-keys");
 }
 
 }
