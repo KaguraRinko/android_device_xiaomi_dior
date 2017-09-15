@@ -307,7 +307,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     WCNSS_cfg.dat \
     WCNSS_qcom_cfg.ini \
-    hostapd_default.conf \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf \
     WCNSS_qcom_wlan_nv.bin \
