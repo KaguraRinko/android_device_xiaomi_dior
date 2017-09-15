@@ -37,6 +37,9 @@ media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 persist.media.treble_omx=false
 
+# Storage
+ro.sys.sdcardfs=false
+
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
