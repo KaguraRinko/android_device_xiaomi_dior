@@ -375,10 +375,10 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
    disabled
    oneshot
 
-service charger /sbin/healthd -c
+service charger /sbin/charger -c
     class charger
     critical
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
 
 service kernel_loggy /system/bin/sh /kernel_loggy.sh
     class main
