@@ -47,6 +47,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
     android.hardware.audio.effect@2.0-impl \
+    android.hardware.broadcastradio@1.0-impl \
     android.hardware.soundtrigger@2.0-impl \
     audiod \
     audio.a2dp.default \
@@ -96,8 +97,10 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
     copybit.msm8226 \
     gralloc.msm8226 \
     hwcomposer.msm8226 \
@@ -114,7 +117,7 @@ PRODUCT_PACKAGES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    libshims_wvm
+    android.hardware.drm@1.0-impl
 
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
@@ -148,12 +151,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.agps_provider=1
 
-# Gralloc
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl
-
 # Graphics
 PRODUCT_PACKAGES += \
     libGLES_android \
@@ -162,10 +159,6 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
-
-# HW Composer
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-impl
 
 # IPC router
 PRODUCT_COPY_FILES += \
@@ -284,8 +277,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full \
-    android.hardware.radio@1.0-impl
+    libprotobuf-cpp-full
 
 # Sensors
 PRODUCT_COPY_FILES += \
