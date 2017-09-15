@@ -171,9 +171,6 @@ BOARD_USES_QC_TIME_SERVICES := true
 # Keymaster
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
-# Radio
-TARGET_RIL_VARIANT := caf
-
 # Flags
 BOARD_NO_SECURE_DISCARD := true
 
