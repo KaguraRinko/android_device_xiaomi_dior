@@ -104,8 +104,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8226 \
     memtrack.msm8226 \
     liboverlay \
-    libtinyxml \
-    libboringssl-compat
+    libtinyxml
 
 PRODUCT_PROPERTY_OVERRIDES += debug.hwui.use_buffer_age=false
 
