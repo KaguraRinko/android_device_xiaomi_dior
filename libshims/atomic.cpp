@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-/* MediaBufferGroup::MediaBufferGroup */
-int _ZN7android16MediaBufferGroupC1Ej(unsigned int);
-int _ZN7android16MediaBufferGroupC1Ev() {
-    return _ZN7android16MediaBufferGroupC1Ej(0);
+#include <string>
+#define ANDROID_ATOMIC_INLINE
+extern "C" {
+#include <cutils/atomic.h>
 }

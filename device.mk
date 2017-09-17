@@ -246,6 +246,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+# Perf
+PRODUCT_PACKAGES += \
+    libshims_atomic
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl \
@@ -256,12 +260,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.timed.enable=true \
     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-    fstab.dior \
-    init.dior.rc \
-    init.dior.usb.rc \
-    ueventd.dior.rc
+# Rootdir
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/fstab.dior:root/fstab.dior \
+    $(LOCAL_PATH)/rootdir/init.dior.rc:root/init.dior.rc \
+    $(LOCAL_PATH)/rootdir/init.dior.usb.rc:root/init.dior.usb.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.dior.rc:root/ueventd.dior.rc
 
 ifeq ($(WITH_EXTRA_DBG),true)
 PRODUCT_PACKAGES += \
