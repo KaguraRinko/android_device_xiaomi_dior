@@ -267,11 +267,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.dior.usb.rc:root/init.dior.usb.rc \
     $(LOCAL_PATH)/rootdir/ueventd.dior.rc:root/ueventd.dior.rc
 
-ifeq ($(WITH_EXTRA_DBG),true)
-PRODUCT_PACKAGES += \
-    kernel_loggy.sh
-endif
-
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
