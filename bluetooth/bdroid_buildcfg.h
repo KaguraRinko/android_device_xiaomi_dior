@@ -18,8 +18,14 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
+#include <cutils/properties.h>
+#include <string.h>
+
 #define BTM_DEF_LOCAL_NAME   "HM NOTE 1LTE"
 
 #define BLUETOOTH_QTI_SW TRUE
-#define BT_CLEAN_TURN_ON_DISABLED 1
+#define MAX_ACL_CONNECTIONS   7
+#define MAX_L2CAP_CHANNELS    16
+#define BLE_VND_INCLUDED   TRUE
+#define BT_CLEAN_TURN_ON_DISABLED TRUE
 #endif
