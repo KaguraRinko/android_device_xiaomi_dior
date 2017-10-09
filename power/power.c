@@ -21,6 +21,7 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include <utils/Log.h>
 
@@ -178,11 +179,6 @@ static void power_hint(__attribute__((unused)) struct power_module *module,
             }
         }
         break;
-    case POWER_HINT_SET_PROFILE:
-        pthread_mutex_lock(&lock);
-        set_power_profile(*(int32_t *)data);
-        pthread_mutex_unlock(&lock);
-        break;
     case POWER_HINT_LOW_POWER:
         /* This hint is handled by the framework */
         break;
@@ -191,23 +187,46 @@ static void power_hint(__attribute__((unused)) struct power_module *module,
     }
 }
 
-static struct hw_module_methods_t power_module_methods = {
-    .open = NULL,
-};
-
-static int get_feature(__attribute__((unused)) struct power_module *module,
-                       feature_t feature)
+static int power_open(const hw_module_t* module, const char* name,
+                    hw_device_t** device)
 {
-    if (feature == POWER_FEATURE_SUPPORTED_PROFILES) {
-        return PROFILE_MAX;
+    ALOGD("%s: enter; name=%s", __FUNCTION__, name);
+
+    if (strcmp(name, POWER_HARDWARE_MODULE_ID)) {
+        return -EINVAL;
     }
-    return -1;
+
+    power_module_t *dev = (power_module_t *)calloc(1,
+            sizeof(power_module_t));
+
+    if (!dev) {
+        ALOGD("%s: failed to allocate memory", __FUNCTION__);
+        return -ENOMEM;
+    }
+
+    dev->common.tag = HARDWARE_MODULE_TAG;
+    dev->common.module_api_version = POWER_MODULE_API_VERSION_0_3;
+    dev->common.hal_api_version = HARDWARE_HAL_API_VERSION;
+
+    dev->init = power_init;
+    dev->powerHint = power_hint;
+    dev->setInteractive = power_set_interactive;
+
+    *device = (hw_device_t*)dev;
+
+    ALOGD("%s: exit", __FUNCTION__);
+
+    return 0;
 }
+
+static struct hw_module_methods_t power_module_methods = {
+    .open = power_open,
+};
 
 struct power_module HAL_MODULE_INFO_SYM = {
     .common = {
         .tag = HARDWARE_MODULE_TAG,
-        .module_api_version = POWER_MODULE_API_VERSION_0_2,
+        .module_api_version = POWER_MODULE_API_VERSION_0_3,
         .hal_api_version = HARDWARE_HAL_API_VERSION,
         .id = POWER_HARDWARE_MODULE_ID,
         .name = "msm8226 Power HAL",
@@ -217,6 +236,5 @@ struct power_module HAL_MODULE_INFO_SYM = {
 
     .init = power_init,
     .setInteractive = power_set_interactive,
-    .powerHint = power_hint,
-    .getFeature = get_feature
+    .powerHint = power_hint
 };
