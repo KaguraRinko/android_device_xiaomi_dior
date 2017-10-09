@@ -17,8 +17,6 @@
 
 LOCAL_PATH := device/xiaomi/dior
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
 
