@@ -391,5 +391,10 @@
     <!-- Night Mode -->
     <bool name="config_nightDisplayAvailable">true</bool>
 
-</resources>
+    <!-- Night Mode -->
+    <bool name="config_nightDisplayAvailable">true</bool>
 
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
+</resources>
