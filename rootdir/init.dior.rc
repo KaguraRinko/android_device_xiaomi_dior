@@ -170,13 +170,13 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    #Create directories for Location services
-    mkdir /data/misc/location 0770 gps gps
-    mkdir /data/misc/location/mq 0770 gps gps
-    mkdir /data/misc/location/xtwifi 0770 gps gps
-    mkdir /data/misc/location/gpsone_d 0770 system gps
-    mkdir /data/misc/location/quipc 0770 gps system
-    mkdir /data/misc/location/gsiff 0770 gps gps
+    # Create directories for Location services
+    mkdir /data/vendor/location 0770 gps gps
+    mkdir /data/vendor/location/mq 0770 gps gps
+    mkdir /data/vendor/location/xtwifi 0770 gps gps
+    mkdir /data/vendor/location/gpsone_d 0770 system gps
+    mkdir /data/vendor/location/quipc 0770 gps system
+    mkdir /data/vendor/location/gsiff 0770 gps gps
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
