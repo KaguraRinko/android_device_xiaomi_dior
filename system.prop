@@ -1,4 +1,3 @@
-
 # Audio
 ro.qc.sdk.audio.ssr=false
 ro.qc.sdk.audio.fluencetype=fluence
@@ -6,12 +5,12 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=true
 persist.audio.fluence.speaker=false
 audio.offload.pcm.16bit.enable=false
-audio.offload.pcm.24bit.enable=false		
-audio.offload.buffer.size.kb=32		
-audio.offload.gapless.enabled=true		
+audio.offload.pcm.24bit.enable=false
+audio.offload.buffer.size.kb=32
+audio.offload.gapless.enabled=true
 audio.offload.multiple.enabled=false
-audio.offload.disable=true
 audio.offload.video=false
+audio.offload.disable=true
 av.streaming.offload.enable=false
 use.voice.path.for.pcm.voip=true
 
@@ -25,17 +24,16 @@ ro.qualcomm.bt.hci_transport=smd
 
 # Display
 ro.opengles.version=196608
-debug.hwui.use_buffer_age=false
 ro.sf.lcd_density=320
 persist.hwc.mdpcomp.enable=true
+debug.hwui.use_buffer_age=false
 
-# Gps Smart Battery Savings (depends on sensor hub)
-persist.mot.gps.smart_battery=1
-
-# Media
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
-persist.media.treble_omx=false
+# GPS
+ro.gps.agps_provider=1
+ro.qc.sdk.izat.premium_enabled=1
+ro.qc.sdk.izat.service_mask=0x5
+persist.gps.qc_nlp_in_use=0
+persist.loc.nlp_name=com.qualcomm.services.location
 
 # Storage
 ro.sys.sdcardfs=false
@@ -43,11 +41,20 @@ ro.sys.sdcardfs=false
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-persist.radio.ramdump_sdcard=1
 ril.subscription.types=RUIM
-persist.data.qmi.adb_logmask=0
 persist.data.netmgrd.qos.enable=true
+persist.data.qmi.adb_logmask=0
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.dont_use_dsd=true
 persist.radio.msgtunnel.start=false
+persist.radio.multisim.config=dsds
+persist.radio.rat_on=combine
 ro.telephony.call_ring.multiple=false
+ro.telephony.ril.config=simactivation
+
+# ADB
+ro.secure=0
+ro.adb.secure=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=adb
