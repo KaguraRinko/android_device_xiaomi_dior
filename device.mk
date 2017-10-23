@@ -74,7 +74,7 @@ PRODUCT_PACKAGES += \
     libbt-vendor
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/init.dior.bt.sh:system/bin/init.dior.bt.sh
+    $(LOCAL_PATH)/configs/init.dior.bt.sh:system/vendor/bin/init.dior.bt.sh
 
 # CABL
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -284,7 +284,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensor_def_qcomdev.conf \
+    $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/vendor/etc/sensor_def_qcomdev.conf \
 
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
