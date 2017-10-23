@@ -173,7 +173,6 @@ on post-fs-data
     # Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
-    mkdir /data/vendor/location/xtwifi 0770 gps gps
     mkdir /data/vendor/location/gpsone_d 0770 system gps
     mkdir /data/vendor/location/quipc 0770 gps system
     mkdir /data/vendor/location/gsiff 0770 gps gps
