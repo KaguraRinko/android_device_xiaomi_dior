@@ -86,11 +86,7 @@ TARGET_PROVIDES_GPS_LOC_API := true
 # Graphics
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
-HAVE_ADRENO_SOURCE:= false
-TARGET_USES_POST_PROCESSING := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-BOARD_USES_ADRENO := true
-SF_START_GRAPHICS_ALLOCATOR_SERVICE := true
 
 # Shader cache config options
 # Maximum size of the GLES Shaders that can be cached for reuse.
