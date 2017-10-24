@@ -313,11 +313,8 @@ PRODUCT_PACKAGES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    WCNSS_cfg.dat \
-    WCNSS_qcom_cfg.ini \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf \
-    WCNSS_qcom_wlan_nv.bin \
     WCNSS_qcom_wlan_nv_h3gbl.bin \
     WCNSS_qcom_wlan_nv_h3td.bin \
     WCNSS_qcom_wlan_nv_h3w.bin
@@ -347,7 +344,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/vendor/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/vendor/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/vendor/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
