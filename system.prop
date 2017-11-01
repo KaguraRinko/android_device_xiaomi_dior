@@ -55,3 +55,5 @@ ro.adb.secure=0
 persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=adb
+
+camera.disable_treble=true
