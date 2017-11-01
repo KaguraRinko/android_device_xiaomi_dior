@@ -37,12 +37,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog \
     dalvik.vm.dex2oat-swap=false
 
-# ANT+
-#PRODUCT_PACKAGES += \
-#    AntHalService \
-#    com.dsi.ant.antradio_library \
-#    libantradio
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -82,11 +76,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl.legacy \
-    camera.device@1.0-impl.legacy \
+    android.hardware.camera.provider@2.4-impl-legacy \
+    camera.device@1.0-impl-legacy \
     Snap \
     libxml2 \
     camera.msm8226
+
+# Configstore
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.0-impl
 
 # Connectivity
 PRODUCT_PACKAGES += \
@@ -333,8 +331,7 @@ PRODUCT_PACKAGES += \
     libQWiFiSoftApCfg \
     wcnss_service \
     WCNSS_qcom_wlan_factory_nv.bin \
-    libwcnss_qmi \
-    libxml2
+    libwcnss_qmi
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
