@@ -1,0 +1,25 @@
+# Bluetooth
+/system/bin/bdaddr_xiaomi                     u:object_r:bdaddr_exec:s0
+/system/bin/init\.dior\.bt\.sh                u:object_r:bluetooth_loader_exec:s0
+
+# Camera
+/data/cam_socket.*                            u:object_r:camera_socket:s0
+
+# MKHW
+/sys/class/timed_output/vibrator/amp          u:object_r:vibeamp_sysfs:s0
+
+# GPS
+/system/bin/gsiff_daemon                      u:object_r:location_exec:s0
+
+# Key Disabler
+/sys/devices/gpio_keys.76/disabled_keys       u:object_r:display_sysfs:s0
+
+# MP-Decision
+/data/system/default_values                   u:object_r:mpctl_data_file:s0
+/dev/socket/mpctl                             u:object_r:mpctl_socket:s0
+
+# Sensors
+/persist/misc/sensors(/.*)?                   u:object_r:sensors_persist_file:s0
+
+# Thermal
+/system/bin/thermal-engine                    u:object_r:thermal-engine_exec:s0
