@@ -112,7 +112,6 @@ TARGET_NO_RPC := true
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_dior
 TARGET_RECOVERY_DEVICE_MODULES := libinit_dior
-TARGET_UNIFIED_DEVICE := true
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/dior
