@@ -57,7 +57,7 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
-BOARD_NO_CHARGER_LED := true
+BOARD_CHARGER_DISABLE_INIT_BLANK :=true
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
