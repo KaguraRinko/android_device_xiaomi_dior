@@ -19,13 +19,8 @@
 
 <resources>
 
-    <!-- Doze: pulse parameter - how long does it take to fade in? -->
-    <integer name="doze_pulse_duration_in">900</integer>
-
-    <!-- Doze: pulse parameter - once faded in, how long does it stay visible? -->
-    <integer name="doze_pulse_duration_visible">3000</integer>
-
-    <!-- Doze: pulse parameter - how long does it take to fade out? -->
-    <integer name="doze_pulse_duration_out">600</integer>
+    <!-- Doze: when to pulse after a buzzworthy notification arrives -->
+    <string name="doze_pulse_schedule" translatable="false">5s,15s,30s,60s</string>
 
 </resources>
+

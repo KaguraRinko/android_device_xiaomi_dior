@@ -15,7 +15,9 @@
 # limitations under the License.
 #
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -82,6 +84,12 @@ PRODUCT_PACKAGES += \
     libcamera_shim \
     libxml2 \
     camera.msm8226
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera.disable_treble=true
 
 # Configstore
 PRODUCT_PACKAGES += \
