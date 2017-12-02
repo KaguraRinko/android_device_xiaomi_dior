@@ -80,7 +80,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-legacy \
     camera.device@1.0-impl-legacy \
-    Camera2 \
     libcamera_shim \
     libxml2 \
     camera.msm8226
