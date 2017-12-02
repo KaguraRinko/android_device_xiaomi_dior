@@ -398,7 +398,7 @@ on charger
 
 on property:sys.boot_completed=1
     # Temp hack to fix torch not being registered on boot
-    restart media
+    restart camera
 
     # Enable Power modes and set the IO scheduler
     write /sys/module/lpm_levels/enable_low_power/l2 4
