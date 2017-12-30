@@ -18,6 +18,9 @@
 
 /dev/tspdrv               0660   system     system
 
+# the DIAG device node is not world writable/readable.
+/dev/diag                 0660   system     oem_2950
+
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
 

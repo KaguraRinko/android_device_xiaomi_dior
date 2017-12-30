@@ -272,7 +272,7 @@ on property:bluetooth.hciattach=false
 service qmuxd /vendor/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth wakelock gps diag
+    group radio audio bluetooth wakelock gps diag oem_2950
 
 service netmgrd /vendor/bin/netmgrd
     class main
@@ -310,7 +310,7 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     socket rild-debug2 stream 660 radio system
     user radio
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw log readproc wakelock diag qcom_diag
+    group radio cache inet misc audio sdcard_r sdcard_rw log readproc wakelock diag oem_2950
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 
