@@ -61,7 +61,7 @@ TARGET_USES_NON_TREBLE_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_DISABLE_INIT_BLANK :=true
-WITH_LINEAGE_CHARGER := false
+WITH_MOKEE_CHARGER := false
 
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
@@ -77,7 +77,7 @@ BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
 BOARD_FLASH_BLOCK_SIZE             := 131072
 
 # FM
-BOARD_HAVE_QCOM_FM := true
+# BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # GPS
@@ -99,9 +99,10 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# MKHW
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS += $(LOCAL_PATH)/lineagehw
+# MoKee Hardware
+BOARD_HARDWARE_CLASS := \
+    hardware/mokee/mkhw \
+    $(LOCAL_PATH)/mkhw
     
 # No old RPC for prop
 TARGET_NO_RPC := true
@@ -153,8 +154,8 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+#include device/qcom/sepolicy/sepolicy.mk
+# BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Odex
 WITH_DEXPREOPT += false
