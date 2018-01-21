@@ -166,8 +166,7 @@ include device/qcom/sepolicy/legacy-sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Odex
-WITH_DEXPREOPT += false
-DONT_DEXPREOPT_PREBUILTS += false
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
 
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
