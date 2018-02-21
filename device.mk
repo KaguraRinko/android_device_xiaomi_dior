@@ -28,6 +28,12 @@ TARGET_SCREEN_WIDTH := 720
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
+# ANT+
+PRODUCT_PACKAGES += \
+      AntHalService \
+      com.dsi.ant.antradio_library \
+      libantradio
+
 # AOSP Packages
 PRODUCT_PACKAGES += \
     Launcher3 \
@@ -243,6 +249,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
