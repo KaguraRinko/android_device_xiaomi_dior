@@ -23,6 +23,9 @@ $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 # Inherit some common MK stuff (full)
 $(call inherit-product, vendor/mk/config/common_full_phone.mk)
 
+# Inherit common Android Go configurations
+$(call inherit-product, build/target/product/go_defaults.mk)
+
 # Product configuration
 PRODUCT_NAME := mk_dior
 PRODUCT_DEVICE := dior
