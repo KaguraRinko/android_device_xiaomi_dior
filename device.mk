@@ -98,7 +98,8 @@ PRODUCT_PACKAGES += \
     libxml2 \
     camera.msm8226 \
     Snap \
-    libshim_camera
+    libshim_camera \
+    libshim_dso_handle
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
