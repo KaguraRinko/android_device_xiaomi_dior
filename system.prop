@@ -57,3 +57,4 @@ persist.service.debuggable=1
 persist.sys.usb.config=adb
 
 camera.disable_treble=true
+ro.bionic.ld.warning=0
