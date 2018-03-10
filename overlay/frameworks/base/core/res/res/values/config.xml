@@ -198,7 +198,22 @@
         <item>255</item> <!-- 100% --> <!-- 2500 -->
     </integer-array>
 
-    <!--<integer name="config_buttonBrightnessSettingDefault">0</integer>-->
+    <!-- Array of output values for button backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessButtonBacklightValues">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </integer-array>
 
     <!-- Control the behavior when the user long presses the home button.
             0 - Nothing
