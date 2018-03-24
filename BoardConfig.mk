@@ -64,6 +64,16 @@ BACKLIGHT_PATH := /sys/class/leds/lcd-backlight/brightness
 BOARD_CHARGER_DISABLE_INIT_BLANK :=true
 WITH_MOKEE_CHARGER := false
 
+# Dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := false
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
+    endif
+  endif
+endif
+
 # Encryption
 TARGET_HW_DISK_ENCRYPTION := true
 TARGET_LEGACY_HW_DISK_ENCRYPTION := true
@@ -165,9 +175,6 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib/hw/camera.vendor.msm8226.so|libshim_camera.so \
     /system/vendor/lib/libFaceProc.so|libshim_dso_handle.so
-
-# Odex
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
 
 # Snapdragon LLVM
 TARGET_USE_SDCLANG := true
