@@ -343,7 +343,7 @@ on property:ro.boot.modem=LTEW
     setprop persist.radio.rat_on combine
 
 on property:persist.radio.multisim.config=dsds
-    start ril-daemon2
+    enable ril-daemon2
 
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
