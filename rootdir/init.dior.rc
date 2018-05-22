@@ -345,6 +345,9 @@ on property:init.svc.media=restarting
 on property:init.svc.servicemanager=restarting
     restart qcamerasvr
 
+on property:sys.boot_completed=1
+    restart cameraserver
+
 service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
