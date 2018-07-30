@@ -280,9 +280,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
-    android.hardware.power@1.0-service \
-    power.msm8226
+    android.hardware.power@1.0-service-qti
 
 # Qualcomm
 PRODUCT_PROPERTY_OVERRIDES += \
