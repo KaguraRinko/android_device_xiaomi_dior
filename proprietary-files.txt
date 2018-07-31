@@ -252,3 +252,6 @@ etc/firmware/wcnss.b08:vendor/firmware/wcnss.b08
 etc/firmware/wcnss.b09:vendor/firmware/wcnss.b09
 etc/firmware/wcnss.mdt:vendor/firmware/wcnss.mdt
 -lib/libqminvapi.so
+
+# aptX
+vendor/lib/libaptX_encoder.so
