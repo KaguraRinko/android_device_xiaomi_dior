@@ -240,7 +240,7 @@ on post-fs-data
     chmod 0664 /sys/devices/gpio_keys.76/disabled_keys
     restorecon /sys/devices/gpio_keys.76/disabled_keys
 
-service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/system/vendor/etc/sec_config"
     class main
     user root
     oneshot
