@@ -79,10 +79,9 @@ PRODUCT_COPY_FILES += \
 # Bluetooth
 PRODUCT_PACKAGES += \
     bdaddr_xiaomi \
-    init.qcom.fm.sh \
+    libbt-vendor \
     android.hardware.bluetooth@1.0-impl \
-    android.hardware.bluetooth@1.0-service \
-    libbt-vendor
+    android.hardware.bluetooth@1.0-service
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.dior.bt.sh:system/vendor/bin/init.dior.bt.sh
@@ -288,12 +287,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # Rootdir
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/fstab.dior:root/fstab.dior \
-    $(LOCAL_PATH)/rootdir/init.dior.rc:root/init.dior.rc \
-    $(LOCAL_PATH)/rootdir/init.dior.usb.rc:root/init.dior.usb.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.dior.rc:root/ueventd.dior.rc \
-    $(LOCAL_PATH)/rootdir/kernel_loggy.sh:root/kernel_loggy.sh
+PRODUCT_PACKAGES += \
+    fstab.dior \
+    init.dior.rc \
+    init.dior.usb.rc \
+    ueventd.dior.rc \
+    kernel_loggy.sh
 
 ifeq ($(WITH_EXTRA_DBG),true)
 PRODUCT_PACKAGES += \
