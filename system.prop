@@ -58,3 +58,6 @@ persist.sys.usb.config=adb
 
 camera.disable_treble=true
 ro.bionic.ld.warning=0
+
+# Maintainer
+ro.mk.maintainer=subdragonzj
