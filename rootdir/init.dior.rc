@@ -49,6 +49,7 @@ on fs
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
     mount_all /vendor/etc/fstab.dior
+    swapon_all /vendor/etc/fstab.dior
 
     restorecon_recursive /persist
 
@@ -417,9 +418,6 @@ on property:sys.boot_completed=1
     # Temp hack to fix torch not being registered on boot
     restart camera
     restart media
-    
-    # Enable ZRAM on boot_complete
-    swapon_all /vendor/etc/fstab.dior
 
     # Enable Power modes and set the IO scheduler
     write /sys/module/lpm_levels/enable_low_power/l2 4
