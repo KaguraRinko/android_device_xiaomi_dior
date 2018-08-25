@@ -19,7 +19,7 @@ av.streaming.offload.enable=false
 use.voice.path.for.pcm.voip=true
 
 # Bluetooth
-qcom.bluetooth.soc=smd
+vendor.qcom.bluetooth.soc=pronto
 qcom.bt.dev_power_class=1
 ro.bluetooth.dun=true
 ro.bluetooth.sap=true

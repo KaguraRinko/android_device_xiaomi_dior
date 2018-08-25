@@ -24,7 +24,7 @@ POWER_CLASS=`getprop qcom.bt.dev_power_class`
 #load bd addr
 BDADDR=`cat /data/misc/bluetooth/bdaddr`
 
-setprop bluetooth.status off
+setprop vendor.bluetooth.status off
 
 logi "BDADDR: $BDADDR"
 
@@ -50,10 +50,10 @@ fi
 case $? in
   0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
   *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;
-     setprop bluetooth.status off
+     setprop vendor.bluetooth.status off
      exit $exit_code_hci_qcomm_init;;
 esac
 
-setprop bluetooth.status on
+setprop vendor.bluetooth.status on
 
 exit 0
