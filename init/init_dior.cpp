@@ -51,6 +51,8 @@ void property_override(char const prop[], char const value[])
 
 void vendor_load_properties()
 {
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
     std::string platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)
         return;
