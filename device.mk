@@ -91,6 +91,9 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libshim_dso_handle
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+
 # Configstore
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.0-impl \
