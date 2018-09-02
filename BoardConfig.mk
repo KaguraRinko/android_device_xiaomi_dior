@@ -113,9 +113,7 @@ USE_DEVICE_SPECIFIC_GPS := true
 TARGET_PROVIDES_GPS_LOC_API := true
 
 # MoKee Hardware
-BOARD_HARDWARE_CLASS := \
-    hardware/mokee/mkhw \
-    $(LOCAL_PATH)/mkhw
+JAVA_SOURCE_OVERLAYS := org.mokee.hardware|$(LOCAL_PATH)/mkhw|**/*.java
     
 # No old RPC for prop
 TARGET_NO_RPC := true
