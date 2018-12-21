@@ -389,7 +389,7 @@ service location_mq /vendor/bin/location-mq
 service charger /charger
     class charger
     critical
-    seclabel u:r:charger:s0
+    seclabel u:r:healthd:s0
 
 service kernel_loggy /system/bin/sh /kernel_loggy.sh
     class main
