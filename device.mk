@@ -293,6 +293,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.mokee.trust@1.0-service
+
 # USB HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
