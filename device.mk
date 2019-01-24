@@ -120,7 +120,7 @@ PRODUCT_PACKAGES += \
 
 # Display calibration
 PRODUCT_PACKAGES += \
-    libjni_livedisplay
+    vendor.mokee.livedisplay@1.0-service-legacymm
 
 # DRM
 PRODUCT_PACKAGES += \
