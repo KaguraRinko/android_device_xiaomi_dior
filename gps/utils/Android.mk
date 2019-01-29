@@ -10,7 +10,7 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     libcutils \
     liblog \
-    libandroid_runtime
+    libprocessgroup
 
 LOCAL_SRC_FILES += \
     loc_log.cpp \
