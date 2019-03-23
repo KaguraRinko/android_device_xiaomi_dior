@@ -44,6 +44,7 @@ write_headers
 
 write_makefiles "$MY_DIR"/proprietary-files.txt true
 echo "" >> "$PRODUCTMK"
+write_makefiles "$MY_DIR"/proprietary-files-cam.txt true
 
 # Finish
 write_footers
