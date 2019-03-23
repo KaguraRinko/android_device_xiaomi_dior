@@ -1,6 +1,7 @@
 # Camera - from MIUI V9.2.4.0
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8226.so:vendor/lib/hw/camera.vendor.msm8226.so|6ac9bd33114fc9f2d3a00eb60ee37ebece82c5b2
+lib/libmmcamera_interface.so:vendor/lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so:vendor/lib/libmmjpeg_interface.so
 vendor/lib/libAKM8963.so
 vendor/lib/libarcsoft_beauty_shot.so
