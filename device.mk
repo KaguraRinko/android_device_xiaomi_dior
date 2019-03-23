@@ -240,8 +240,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false
 
 # MKActions
-PRODUCT_PACKAGES += \
-    MKActions
+#PRODUCT_PACKAGES += \
+#    MKActions
 
 # OMX properties
 PRODUCT_PROPERTY_OVERRIDES += \
