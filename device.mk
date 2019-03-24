@@ -40,11 +40,6 @@ PRODUCT_PACKAGES += \
     messaging \
     Terminal
 
-# ART
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-flags=--no-watch-dog \
-    dalvik.vm.dex2oat-swap=false
-
 # Audio
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -86,10 +81,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init.dior.bt.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.dior.bt.sh
 
-# CABL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qualcomm.cabl=0
-
 # Camera
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl-legacy \
@@ -99,12 +90,6 @@ PRODUCT_PACKAGES += \
     Snap \
     libshim_camera \
     libshim_dso_handle
-
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera.disable_treble=true
 
 # Configstore
 PRODUCT_PACKAGES += \
@@ -130,8 +115,6 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
-PRODUCT_PROPERTY_OVERRIDES += debug.hwui.use_buffer_age=false
-
 # Display calibration
 PRODUCT_PACKAGES += \
     libjni_livedisplay
@@ -140,9 +123,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
     android.hardware.drm@1.0-service
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled=true
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -170,9 +150,6 @@ PRODUCT_PACKAGES += \
     izat.conf \
     quipc.conf \
     sap.conf
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.agps_provider=1
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -234,18 +211,9 @@ PRODUCT_PACKAGES += \
     libOmxVidcCommon \
     libstagefrighthw
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.legacyencoder=true \
-    media.stagefright.less-secure=true \
-    persist.media.treble_omx=false
-
 # MKActions
 #PRODUCT_PACKAGES += \
 #    MKActions
-
-# OMX properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.media.treble_omx=false
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -280,11 +248,6 @@ PRODUCT_COPY_FILES += \
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-service-qti
-
-# Qualcomm
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true \
-    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # Rootdir
 PRODUCT_PACKAGES += \
@@ -321,10 +284,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     android.hardware.sensors@1.0-service \
     sensors.msm8226
-
- # Storage
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=false
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -368,19 +327,8 @@ PRODUCT_PACKAGES += \
     wcnss_service \
     libwpa_client
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    wifi.interface=wlan0 \
-    ro.disableWifiApFirmwareReload=true
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
 
-# IO Scheduler
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.io.scheduler=bfq
-
-# LTE, GSM/WCDMA
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.telephony.get_imsi_from_sim=true

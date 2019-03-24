@@ -1,3 +1,7 @@
+# ART
+dalvik.vm.dex2oat-flags=--no-watch-dog
+dalvik.vm.dex2oat-swap=false
+
 # Audio
 ro.qc.sdk.audio.ssr=false
 ro.qc.sdk.audio.fluencetype=fluence
@@ -22,11 +26,19 @@ ro.bluetooth.sap=true
 ro.bluetooth.hfp.ver=1.6
 ro.qualcomm.bt.hci_transport=smd
 
+# Camera
+persist.camera.cpp.duplication=false
+persist.camera.hal.debug.mask=0
+
 # Display
 ro.opengles.version=196608
 ro.sf.lcd_density=320
-persist.hwc.mdpcomp.enable=true
 debug.hwui.use_buffer_age=false
+debug.composition.type=c2d
+debug.mdpcomp.idletime=600
+persist.hwc.mdpcomp.enable=true
+persist.hwc.ptor.enable=true
+debug.enable.sglscale=1
 
 # GPS
 ro.gps.agps_provider=1
@@ -34,6 +46,28 @@ ro.qc.sdk.izat.premium_enabled=1
 ro.qc.sdk.izat.service_mask=0x5
 persist.gps.qc_nlp_in_use=0
 persist.loc.nlp_name=com.qualcomm.services.location
+
+# LTE, GSM/WCDMA
+ro.telephony.get_imsi_from_sim=true
+
+# Media
+persist.media.treble_omx=false
+drm.service.enabled=1
+vidc.enc.narrow.searchrange=1
+
+# Perf
+ro.config.max_starting_bg=8
+ro.vendor.extension_library=libqti-perfd-client.so
+ro.core_ctl_min_cpu=0
+ro.core_ctl_max_cpu=4
+
+# Qualcomm® aptX™
+persist.bt.enableAptXHD=true
+persist.service.btui.use_aptx=1
+persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
+
+# SDCard fs
+ro.sys.sdcardfs=false
 
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
@@ -49,6 +83,12 @@ persist.radio.rat_on=combine
 ro.telephony.call_ring.multiple=false
 ro.telephony.ril.config=simactivation
 
+# Wi-Fi
+wifi.interface=wlan0
+
+# Wi-Fi display
+persist.debug.wfd.enable=1
+
 # ADB
 ro.secure=0
 ro.adb.secure=0
@@ -56,7 +96,6 @@ persist.service.adb.enable=1
 persist.service.debuggable=1
 persist.sys.usb.config=adb
 
-camera.disable_treble=true
 ro.bionic.ld.warning=0
 
 # Maintainer
