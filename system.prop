@@ -29,6 +29,7 @@ ro.qualcomm.bt.hci_transport=smd
 # Camera
 persist.camera.cpp.duplication=false
 persist.camera.hal.debug.mask=0
+camera.disable_treble=true
 
 # Display
 ro.opengles.version=196608
