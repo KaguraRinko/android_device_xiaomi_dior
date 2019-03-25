@@ -52,7 +52,6 @@ persist.loc.nlp_name=com.qualcomm.services.location
 ro.telephony.get_imsi_from_sim=true
 
 # Media
-persist.media.treble_omx=false
 drm.service.enabled=1
 vidc.enc.narrow.searchrange=1
 
