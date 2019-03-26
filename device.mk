@@ -257,13 +257,7 @@ PRODUCT_PACKAGES += \
     fstab.dior \
     init.dior.rc \
     init.dior.usb.rc \
-    ueventd.dior.rc \
-    kernel_loggy.sh
-
-ifeq ($(WITH_EXTRA_DBG),true)
-PRODUCT_PACKAGES += \
-    kernel_loggy.sh
-endif
+    ueventd.dior.rc
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \

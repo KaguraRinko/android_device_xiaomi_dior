@@ -391,11 +391,6 @@ service charger /charger
     critical
     seclabel u:r:healthd:s0
 
-service kernel_loggy /system/bin/sh /kernel_loggy.sh
-    class main
-    user root
-    oneshot
-
 on charger
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/lpm_levels/enable_low_power/l2 2
