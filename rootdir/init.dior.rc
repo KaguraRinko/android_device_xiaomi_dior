@@ -60,18 +60,11 @@ on boot
     chown system graphics /sys/class/graphics/fb0/dynamic_fps
     chmod 0664 /sys/class/graphics/fb0/dynamic_fps
 
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
-
     # Create QMUX deamon socket area
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_audio 0770 media audio
-    chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-    chmod 2770 /dev/socket/qmux_gps
+    mkdir /dev/socket/qmux_radio 2770 radio radio
+    mkdir /dev/socket/qmux_audio 2770 media audio
+    mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 2770 gps gps
 
     # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -90,7 +83,6 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
 
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
@@ -197,8 +189,6 @@ on post-fs-data
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
-    mkdir /data/vendor/wifi/sockets 0770 wifi wifi
-    mkdir /data/vendor/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa 0770 wifi wifi
     mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
 
