@@ -301,6 +301,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
 
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.mk.build.vendor_security_patch=2016-10-01
+
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.mokee
