@@ -290,9 +290,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl
 
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.mokee.trust@1.0-service
