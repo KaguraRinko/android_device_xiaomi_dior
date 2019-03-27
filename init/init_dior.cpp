@@ -69,6 +69,4 @@ void vendor_load_properties()
 
     property_override("ro.product.device", "dior");
     property_override("ro.build.product", "dior");
-    property_override("ro.build.description", "dior-user 4.4.4 KTU84P V8.2.1.0.KHIMIDL release-keys");
-    property_override("ro.build.fingerprint", "Xiaomi/dior/dior:4.4.4/KTU84P/V8.2.1.0.KHIMIDL:user/release-keys");
 }
