@@ -118,11 +118,6 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
-# Display calibration
-PRODUCT_PACKAGES += \
-    vendor.mokee.livedisplay@2.0-service-legacymm \
-    vendor.mokee.livedisplay@2.0-service-sysfs
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
