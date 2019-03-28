@@ -68,7 +68,7 @@ persist.service.btui.use_aptx=1
 persistent.bt.a2dp_offload_cap=sbc-aptx-aptXHD
 
 # SDCard fs
-ro.sys.sdcardfs=false
+ro.sys.sdcardfs=true
 
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
