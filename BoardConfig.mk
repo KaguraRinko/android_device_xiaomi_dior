@@ -115,9 +115,6 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_PROVIDES_GPS_LOC_API := true
 
-# MoKee Hardware
-JAVA_SOURCE_OVERLAYS := org.mokee.hardware|$(LOCAL_PATH)/mkhw|**/*.java
-    
 # No old RPC for prop
 TARGET_NO_RPC := true
 
