@@ -92,6 +92,7 @@ ro.telephony.ril.config=simactivation
 
 # Wi-Fi
 wifi.interface=wlan0
+ro.disableWifiApFirmwareReload=true
 
 # ADB
 ro.secure=0
