@@ -262,7 +262,7 @@
     <hal format="hidl">
         <name>vendor.mokee.power</name>
         <transport>hwbinder</transport>
-        <version>1.0</version>
+        <version>1.1</version>
         <interface>
             <name>IMoKeePower</name>
             <instance>default</instance>
