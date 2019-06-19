@@ -135,6 +135,10 @@ vendor/lib/libril-qc-qmi-1.so|483836d4db4f7e102062ef26c22f949c728cebc0
 vendor/lib/libril-qcril-hook-oem.so|57eb11d00f5997d9d18835fffc92d42a60adfd5a
 vendor/lib/libsystem_health_mon.so|fb912bf7e374cdb2a7fad3557856755acbc52038
 vendor/lib/libxml.so|a7302566a69554a521d2d569274fdc082d1d0145
+etc/modem/Diag.cfg:vendor/etc/modem/Diag.cfg
+vendor/lib/libCommandSvc.so
+vendor/lib/libdsucsd.so
+vendor/lib/libqmi_csvt_srvc.so
 
 # Sensors - from 
 vendor/bin/sensors.qcom|e0f68a6bf772ca986597ad616471bcb796be41f2
