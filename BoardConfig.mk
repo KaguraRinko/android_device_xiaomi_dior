@@ -60,8 +60,9 @@ TARGET_USES_NON_TREBLE_CAMERA := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/bin/mediaserver=19 \
-    /system/vendor/bin/mm-qcamera-daemon=19
+    /system/bin/cameraserver=22 \
+    /system/bin/mediaserver=22 \
+    /system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
