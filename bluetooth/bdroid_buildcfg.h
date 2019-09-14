@@ -18,10 +18,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#include <cutils/properties.h>
-#include <string.h>
-
-#undef PROPERTY_VALUE_MAX
+#pragma push_macro("PROPERTY_VALUE_MAX")
 
 #define BTM_DEF_LOCAL_NAME   "HM NOTE 1LTE"
 
@@ -29,4 +26,5 @@
 #define MAX_ACL_CONNECTIONS   7
 #define MAX_L2CAP_CHANNELS    16
 #define BT_CLEAN_TURN_ON_DISABLED TRUE
+#pragma pop_macro("PROPERTY_VALUE_MAX")
 #endif
