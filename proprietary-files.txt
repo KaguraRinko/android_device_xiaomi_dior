@@ -186,3 +186,5 @@ vendor/firmware/wcnss.mdt|16e36cba2694c37a617cc9a5704cca0c65bf6c24
 
 # aptX
 vendor/lib/libaptX_encoder.so|b03772672144d4b750a5672c2922aded93bb0512
+
+framework/services.jar|278e9d5e242ee5f1f756dcba4c0330e582538dd2
