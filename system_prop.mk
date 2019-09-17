@@ -101,7 +101,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.dont_use_dsd=true \
     persist.radio.msgtunnel.start=false \
-    persist.radio.multisim.config=dsds \
     persist.radio.rat_on=combine \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.ril.config=simactivation
