@@ -315,7 +315,7 @@ on property:ro.boot.modem=LTETD
 on property:ro.boot.modem=LTEW
     setprop persist.radio.rat_on combine
 
-on property:persist.radio.multisim.config=dsds
+on property:persist.radio.multisim.config=none
     enable ril-daemon2
 
 service qcamerasvr /vendor/bin/mm-qcamera-daemon
