@@ -112,10 +112,10 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 USE_DEVICE_SPECIFIC_GPS := true
 TARGET_PROVIDES_GPS_LOC_API := true
 
-# MoKee Hardware
+# Lineage Hardware
 BOARD_HARDWARE_CLASS := \
-    hardware/mokee/mkhw \
-    $(LOCAL_PATH)/mkhw
+    hardware/lineage/lineagehw \
+    $(LOCAL_PATH)/lineagehw
     
 # No old RPC for prop
 TARGET_NO_RPC := true

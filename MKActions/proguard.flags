@@ -1,4 +1,4 @@
--keep class com.mokee.MKActions.* {
+-keep class com.lineageos.MKActions.* {
   *;
 }
 

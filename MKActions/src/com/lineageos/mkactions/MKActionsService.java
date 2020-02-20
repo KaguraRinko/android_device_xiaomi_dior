@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mokee.mkactions;
+package com.lineageos.mkactions;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;

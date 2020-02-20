@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mokee.mkactions"
+    package="com.lineageos.mkactions"
     android:sharedUserId="android.uid.system">
 
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
@@ -13,14 +13,14 @@
         android:label="@string/device_settings_app_name"
         android:persistent="true">
 
-        <receiver android:name="com.mokee.mkactions.BootCompletedReceiver">
+        <receiver android:name="com.lineageos.mkactions.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.mokee.mkactions.MKActionsService"
+        <service android:name="com.lineageos.mkactions.MKActionsService"
                  android:permission="MKActionsService">
         </service>
 

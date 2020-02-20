@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.mokee.mkactions;
+package com.lineageos.mkactions;
 
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;

@@ -100,4 +100,4 @@ persist.sys.usb.config=adb
 ro.bionic.ld.warning=0
 
 # Maintainer
-ro.mk.maintainer=subdragonzj
+ro.rr.maintainer=baolong24
