@@ -67,4 +67,4 @@ void vendor_load_properties()
 
     property_override("ro.product.device", "dior");
     property_override("ro.build.product", "dior");
-
+}
