@@ -303,6 +303,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-service.lineage
 
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2016-10-01
+
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd_default.conf \
