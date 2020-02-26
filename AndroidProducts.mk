@@ -1,2 +1,3 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mk_dior.mk
+    $(LOCAL_DIR)/exthm_dior.mk
+
