@@ -100,11 +100,11 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-# MKHW
+# CMHW
 BOARD_USES_MOKEE_HARDWARE := true
 BOARD_HARDWARE_CLASS := \
-    hardware/mokee/mkhw \
-    $(LOCAL_PATH)/mkhw
+    hardware/cyanogen/cmhw \
+    $(LOCAL_PATH)/cmhw
     
 # No old RPC for prop
 TARGET_NO_RPC := true

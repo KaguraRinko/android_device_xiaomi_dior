@@ -14,19 +14,22 @@
  * limitations under the License.
  */
 
-package com.mokee.mkactions;
+package com.cyanogenmod.cmactions;
 
-import android.os.Bundle;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
-import com.android.settingslib.drawer.SettingsDrawerActivity;
+public class BootCompletedReceiver extends BroadcastReceiver {
 
-public class GesturePreferenceActivity extends SettingsDrawerActivity {
+    private static final boolean DEBUG = false;
+    private static final String TAG = "MKActions";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getFragmentManager().beginTransaction()
-                .replace(R.id.content_frame, new GesturePreferenceFragment()).commit();
+    public void onReceive(final Context context, Intent intent) {
+        if (DEBUG) Log.d(TAG, "Starting service");
+        context.startService(new Intent(context, MKActionsService.class));
     }
 
 }
