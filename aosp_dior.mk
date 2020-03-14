@@ -22,6 +22,8 @@ $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 
 # Inherit some common AEX stuff
 $(call inherit-product, vendor/aosp/config/common.mk)
+TARGET_BOOT_ANIMATION_RES := 720
+EXTENDED_BUILD_TYPE := TEST-baolong24
 
 # Product configuration
 PRODUCT_NAME := aosp_dior
