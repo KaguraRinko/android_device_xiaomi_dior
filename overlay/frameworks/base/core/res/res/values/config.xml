@@ -308,8 +308,11 @@
     <!-- Enable doze powersaving -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
-    <!-- Buttons brightness -->
+    <!-- Buttons brightness
     <integer name="config_buttonBrightnessSettingDefault">255</integer>
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
-    <bool name="config_deviceHasButtonBacklight">true</bool>
+    <bool name="config_deviceHasButtonBacklight">true</bool>-->
+
+    <!-- Boolean indicating whether we want button brightness support -->
+    <bool name="config_button_brightness_support">true</bool>
 </resources>
