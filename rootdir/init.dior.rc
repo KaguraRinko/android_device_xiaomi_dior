@@ -140,6 +140,10 @@ on boot
     # Enable Alucard Hotplug
     write /sys/kernel/alucard_hotplug/hotplug_enable 1
 
+    # Set touch panel permissions
+    chown system system /sys/bus/i2c/drivers/ft5x06_i2c/5-0038/d2w_switch
+    chmod 0775 /sys/bus/i2c/drivers/ft5x06_i2c/5-0038/d2w_switch
+
 on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
