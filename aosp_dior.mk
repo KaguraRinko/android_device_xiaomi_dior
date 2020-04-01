@@ -23,6 +23,7 @@ $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 # Inherit some common aosp stuff
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 TARGET_GAPPS_ARCH := arm
+TARGET_BOOT_ANIMATION_RES := 720
 
 # Product configuration
 PRODUCT_NAME := aosp_dior
