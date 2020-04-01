@@ -20,11 +20,11 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/dior/device.mk)
 $(call inherit-product-if-exists, vendor/xiaomi/dior/dior-vendor.mk)
 
-# Inherit some common exTHmUI stuff (full)
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common aosp stuff
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 # Product configuration
-PRODUCT_NAME := lineage_dior
+PRODUCT_NAME := aosp_dior
 PRODUCT_DEVICE := dior
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
@@ -37,3 +37,4 @@ BUILD_FINGERPRINT="Xiaomi/dior/dior:4.4.4/KTU84P/V9.2.4.0.KHICNEK:user/release-k
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="dior-user 4.4.4 KTU84P V9.2.4.0.KHICNEK release-keys"
+

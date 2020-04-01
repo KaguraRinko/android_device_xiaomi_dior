@@ -1,3 +1,3 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_dior.mk
+    $(LOCAL_DIR)/aosp_dior.mk
 
