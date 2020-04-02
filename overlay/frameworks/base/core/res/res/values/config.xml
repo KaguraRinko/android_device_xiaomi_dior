@@ -300,4 +300,7 @@
 
     <!-- Enable doze powersaving -->
     <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- Button Brightness -->
+    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 </resources>
