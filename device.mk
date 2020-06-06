@@ -115,10 +115,6 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libtinyxml
 
-# Display calibration
-PRODUCT_PACKAGES += \
-    libjni_livedisplay
-
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
