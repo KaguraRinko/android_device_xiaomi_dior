@@ -139,6 +139,11 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
+# Filesystem tools
+PRODUCT_PACKAGES += \
+    e2fsck_static \
+    resize2fs_static
+
 # FM
 PRODUCT_PACKAGES += \
     FMRadio \
