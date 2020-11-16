@@ -241,7 +241,7 @@ on property:init.svc.bdaddr=stopped
 service hciattach /vendor/bin/init.dior.bt.sh
     class late_start
     user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin system
+    group bluetooth net_bt_admin system
     disabled
     oneshot
 
