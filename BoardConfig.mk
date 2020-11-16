@@ -176,7 +176,7 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
 
 BOARD_ROOT_EXTRA_FOLDERS := \
     /firmware \
-    /tombstone
+    /tombstones
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
