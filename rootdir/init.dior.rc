@@ -43,7 +43,7 @@ on fs
     mount_all /vendor/etc/fstab.dior
     swapon_all /vendor/etc/fstab.dior
 
-    restorecon_recursive /mnt/vendor/persist/persist
+    restorecon_recursive /persist
 
 on early-boot
     # Set RLIMIT_MEMLOCK to 64MB
@@ -147,8 +147,8 @@ on post-fs-data
     mkdir /data/misc/audio 0770 audio audio
 
     # We chown/chmod /persist again so because mount is run as root + defaults
-    chown system system /mnt/vendor/persist/
-    chmod 0771 /mnt/vendor/persist/
+    chown system system /persist
+    chmod 0771 /persist
 
     # Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
@@ -195,9 +195,9 @@ on post-fs-data
     chmod 775 /data/misc/sensors
 
     # Sensor
-    mkdir /mnt/vendor/persist/misc
-    mkdir /mnt/vendor/persist/misc/sensors
-    chmod 775 /mnt/vendor/persist/misc/sensors
+    mkdir /persist/misc
+    mkdir /persist/misc/sensors
+    chmod 775 /persist/misc/sensors
 
     # Create FM directories for patchdownloader
     mkdir /data/misc/fm 0770 system system
