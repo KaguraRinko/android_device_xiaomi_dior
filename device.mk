@@ -202,6 +202,10 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8226
 
+# Lineage hardware
+PRODUCT_PACKAGES += \
+    vendor.lineage.touch@1.0-service.dior
+
 # LiveDisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-sysfs
