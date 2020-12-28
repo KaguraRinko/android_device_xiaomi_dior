@@ -1,4 +1,4 @@
-// Copyright (C) 2019 The LineageOS Project
+// Copyright (C) 2019 The Mokee Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,8 +13,8 @@
 // limitations under the License.
 
 cc_binary {
-    name: "vendor.lineage.touch@1.0-service.dior",
-    init_rc: ["vendor.lineage.touch@1.0-service.dior.rc"],
+    name: "vendor.mokee.touch@1.0-service.dior",
+    init_rc: ["vendor.mokee.touch@1.0-service.dior.rc"],
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
     vendor: true,
@@ -26,6 +26,6 @@ cc_binary {
         "libbase",
         "libhidlbase",
         "libutils",
-        "vendor.lineage.touch@1.0",
+        "vendor.mokee.touch@1.0",
     ],
 }

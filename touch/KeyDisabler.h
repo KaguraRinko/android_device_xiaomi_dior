@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 The LineageOS Project
+ * Copyright (C) 2019 The Mokee Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,10 @@
 #ifndef VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H
 #define VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H
 
-#include <vendor/lineage/touch/1.0/IKeyDisabler.h>
+#include <vendor/mokee/touch/1.0/IKeyDisabler.h>
 
 namespace vendor {
-namespace lineage {
+namespace mokee {
 namespace touch {
 namespace V1_0 {
 namespace implementation {
@@ -30,7 +30,7 @@ using ::android::hardware::Return;
 class KeyDisabler : public IKeyDisabler {
   public:
     KeyDisabler();
-    // Methods from ::vendor::lineage::touch::V1_0::IKeyDisabler follow.
+    // Methods from ::vendor::mokee::touch::V1_0::IKeyDisabler follow.
     Return<bool> isEnabled() override;
     Return<bool> setEnabled(bool enabled) override;
   private:
@@ -40,7 +40,7 @@ class KeyDisabler : public IKeyDisabler {
 }  // namespace implementation
 }  // namespace V1_0
 }  // namespace touch
-}  // namespace lineage
+}  // namespace mokee
 }  // namespace vendor
 
 #endif  // VENDOR_LINEAGE_TOUCH_V1_0_KEYDISABLER_H

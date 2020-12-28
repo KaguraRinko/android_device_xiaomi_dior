@@ -17,7 +17,7 @@
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-lineage
+    $(LOCAL_PATH)/overlay-mokee
 
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -197,13 +197,13 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service \
     lights.msm8226
 
-# Lineage hardware
+# Mokee hardware
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.dior
+    vendor.mokee.touch@1.0-service.dior
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sysfs
+    vendor.mokee.livedisplay@2.0-service-sysfs
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -301,7 +301,7 @@ PRODUCT_COPY_FILES += \
 
 # Trust HAL
 PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
+    vendor.mokee.trust@1.0-service
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -321,12 +321,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2016-10-01 \
+    ro.mokee.build.vendor_security_patch=2016-10-01 \
     ro.exthm.build.vendor_security_patch=2016-10-01
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.lineage
+    android.hardware.vibrator@1.0-service.mokee
 
 # Wifi
 PRODUCT_PACKAGES += \
