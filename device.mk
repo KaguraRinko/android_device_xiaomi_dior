@@ -280,9 +280,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
-    sensors.msm8226
+    android.hardware.sensors@1.0-impl.dior \
+    android.hardware.sensors@1.0-service.dior
 
 # Thermal
 PRODUCT_COPY_FILES += \
