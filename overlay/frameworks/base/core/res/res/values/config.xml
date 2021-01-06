@@ -300,7 +300,4 @@
 
     <!-- Enable doze powersaving -->
     <bool name="config_enableAutoPowerModes">true</bool>
-
-    <!-- Support double tap to wake -->
-    <bool name="config_supportDoubleTapWake">true</bool>
 </resources>
