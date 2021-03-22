@@ -1,4 +1,3 @@
-Copyright (C) 2019-2020 The exTHmUI Project
 
 ## Device specifications
 
@@ -18,4 +17,4 @@ Copyright (C) 2019-2020 The exTHmUI Project
 
 ## Device picture
 
-![Xiaomi Redmi Note 4G (Single SIM)](https://download.mokeedev.com/info/static/images/dior.png)
+![Xiaomi Redmi Note 4G (Single SIM)](https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-redmi-note-4g-1.jpg)
