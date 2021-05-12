@@ -1,6 +1,6 @@
 # Bluetooth
 /system/bin/bdaddr_xiaomi                     u:object_r:bdaddr_exec:s0
-/system/bin/init\.dior\.bt\.sh                u:object_r:bluetooth_loader_exec:s0
+/system/bin/init\.dior\.bt\.sh              u:object_r:bluetooth_loader_exec:s0
 
 # Camera
 /data/cam_socket([0-9])+                      u:object_r:camera_socket:s0
@@ -20,3 +20,6 @@
 
 # Thermal
 /system/bin/thermal-engine                    u:object_r:thermal-engine_exec:s0
+
+# Vendor
+/(vendor|system/vendor)/bin/hw/android\.hardware\.gnss@[0-9]\.[0-9]-service\..*   u:object_r:hal_gnss_default_exec:s0

@@ -69,7 +69,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
          .hal_api_version = HARDWARE_HAL_API_VERSION,
          .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Dior Camera Wrapper",
+         .name = "dior Camera Wrapper",
          .author = "The CyanogenMod Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
@@ -171,9 +171,16 @@ static char *camera_fixup_setparams(int id, const char *settings)
         params.set(KEY_QC_ZSL, "on");
     }
 
-    /* Disable flash in HDR mode */
+    /* Enable Morpho EasyHDR and disable flash in HDR mode */
     if (hdrMode && !videoMode) {
+        params.set(KEY_QC_MORPHO_HDR, "true");
+        params.set(KEY_QC_AE_BRACKET_HDR, "AE-Bracket");
+        params.set(KEY_QC_CAPTURE_BURST_EXPOSURE, "-6,8,0");
         params.set(android::CameraParameters::KEY_FLASH_MODE, android::CameraParameters::FLASH_MODE_OFF);
+    } else {
+        params.set(KEY_QC_MORPHO_HDR, "false");
+        params.set(KEY_QC_AE_BRACKET_HDR, "Off");
+        params.set(KEY_QC_CAPTURE_BURST_EXPOSURE, "0,0,0");
     }
 
 #if !LOG_NDEBUG

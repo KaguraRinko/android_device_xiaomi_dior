@@ -30,6 +30,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.hal.debug.mask=0 \
     camera.disable_treble=true
 
+# Charger
+ro.charger.enable_suspend=true
+
 # Dalvik heap
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
@@ -48,7 +51,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.idletime=600 \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true \
-    debug.enable.sglscale=1
+    debug.enable.sglscale=1 \
+    debug.sf.latch_unsignaled=1 \
+    debug.sf.disable_backpressure=1 \
+    debug.sf.enable_gl_backpressure=1
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -64,6 +70,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.stagefright.ccodec=0 \
     debug.stagefright.omx_default_rank.sw-audio=1 \
     debug.stagefright.omx_default_rank=0 \
     drm.service.enabled=1 \
@@ -75,10 +82,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_enable=true
 
+# OMX
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.max_starting_bg=8 \
-    ro.vendor.extension_library=libqti-perfd-client.so \
+    ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so \
     ro.core_ctl_min_cpu=0 \
     ro.core_ctl_max_cpu=4
 
@@ -95,17 +106,22 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Telephony
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
-    ril.subscription.types=RUIM \
+    rild.libargs=-d[SPACE]/dev/smd0 \
+    ril.subscription.types=NV,RUIM \
     persist.data.netmgrd.qos.enable=true \
     persist.data.qmi.adb_logmask=0 \
     persist.radio.add_power_save=1 \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.dont_use_dsd=true \
     persist.radio.msgtunnel.start=false \
+    persist.radio.multisim.config=dsds \
     persist.radio.rat_on=combine \
     ro.telephony.call_ring.multiple=false \
     ro.telephony.ril.config=simactivation
+
+# Traced
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.traced.enable=0
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -122,4 +138,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bionic.ld.warning=0
-

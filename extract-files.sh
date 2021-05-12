@@ -27,7 +27,7 @@ if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
 MK_ROOT="$MY_DIR"/../../..
 
-HELPER="$EXTHM_ROOT"/vendor/exthm/build/tools/extract_utils.sh
+HELPER="$MK_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -36,6 +36,14 @@ fi
 
 # default to not sanitizing the vendor folder before extraction
 clean_vendor=false
+
+function blob_fixup() {
+    case "${1}" in
+    vendor/lib/mediadrm/libwvdrmengine.so)
+        patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v28.so" "${2}"
+    ;;
+    esac
+}
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -57,7 +65,7 @@ if [ -z "$SRC" ]; then
 fi
 
 # Initialize the helper
-setup_vendor "$DEVICE" "$VENDOR" "$EXTHM_ROOT" false $clean_vendor
+setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT" false $clean_vendor
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
 

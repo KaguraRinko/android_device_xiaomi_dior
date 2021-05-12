@@ -11,13 +11,13 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_SHARED_LIBRARIES := \
-    libandroid_runtime \
     liblog \
     libutils \
     libcutils \
     libgps.utils \
     libprocessgroup \
-    libdl 
+    libdl \
+    libandroid_runtime
 
 LOCAL_SRC_FILES += \
     MsgTask.cpp \
@@ -45,8 +45,7 @@ LOCAL_COPY_HEADERS:= \
     UlpProxyBase.h \
     gps_extended_c.h \
     gps_extended.h \
-    loc_core_log.h \
-    LocAdapterProxyBase.h
+    loc_core_log.h
 
 LOCAL_PRELINK_MODULE := false
 

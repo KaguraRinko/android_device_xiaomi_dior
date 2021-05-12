@@ -20,7 +20,7 @@
 
 #pragma push_macro("PROPERTY_VALUE_MAX")
 
-#define BTM_DEF_LOCAL_NAME   "HM NOTE 1LTE"
+#define BTM_DEF_LOCAL_NAME   "Xiaomi Redmi Note LTE"
 
 #define BLUETOOTH_QTI_SW TRUE
 #define MAX_ACL_CONNECTIONS   7
